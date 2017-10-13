@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="solar_system"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake_modules\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/zacg/code/c++/solar-system"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/zacg/code/c++/solar-system"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/zacg/code/c++/solar-system"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="solar_system">
+				<Option output="/Users/zacg/code/c++/solar-system/solar_system" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/zacg/code/c++/solar-system"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Frameworks/SFML.framework"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 solar_system"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="solar_system/fast">
+				<Option output="/Users/zacg/code/c++/solar-system/solar_system" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/zacg/code/c++/solar-system"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Frameworks/SFML.framework"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 solar_system/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zacg/code/c++/solar-system/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/zacg/code/c++/solar-system/config.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/game.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/game.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/main.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/mainmenu.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/mainmenu.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/planet.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/planet.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/resource.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/resource.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/scene.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/sidebar.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/sidebar.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/spaceship.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/spaceship.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/widget.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/widget.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/widget_list.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/widget_list.h">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/cmake_modules/FindSFML.cmake">
+			<Option virtualFolder="CMake Files\cmake_modules\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
