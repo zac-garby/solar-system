@@ -40,3 +40,12 @@ In the future I want to add these features:
     in an attempt decimate the population. If a planet's population gets too low in a war, they can
     surrender, but they'll have to sign a treaty (maybe sending 75% of their resources every year for
     the next n years.) Technological advances might also be faster in wartime.
+    
+
+## Contributing
+
+Have a look at [issues](https://github.com/Zac-Garby/solar-system/issues) for some things which need doing.
+Make a new fork, make some changes, and submit a pull request. I'll probably accept it, so long as it works :)
+
+Also, if you have any ideas for things you'd like to see in the game, add an 
+[issue](https://github.com/Zac-Garby/solar-system/issues).
