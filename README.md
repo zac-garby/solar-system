@@ -47,5 +47,7 @@ In the future I want to add these features:
 Have a look at [issues](https://github.com/Zac-Garby/solar-system/issues) for some things which need doing.
 Make a new fork, make some changes, and submit a pull request. I'll probably accept it, so long as it works :)
 
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with me before making a change.
+
 Also, if you have any ideas for things you'd like to see in the game, add an 
 [issue](https://github.com/Zac-Garby/solar-system/issues).
