@@ -98,7 +98,7 @@ void Planet::update(Game* game, float dt) {
 
     shape.setPosition(getPosition(SYSTEM_CENTER));
 
-    while (shipQueue.size() > 0) {
+    while (shipQueue.empty()) {
         Spaceship ship = shipQueue.back();
         shipQueue.pop_back();
         game->ships.push_back(ship);
