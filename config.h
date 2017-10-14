@@ -77,8 +77,8 @@
 #define MAX_RADIUS 38000
 
 // The bounds of planet speed
-#define MIN_PLANET_SPEED 50
-#define MAX_PLANET_SPEED 80
+#define MIN_PLANET_SPEED 25
+#define MAX_PLANET_SPEED 40
 
 // The radius (in pixels) of the sun
 #define SUN_RADIUS 60

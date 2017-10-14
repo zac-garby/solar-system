@@ -19,7 +19,7 @@ Game::Game() {
     while (numberInhabited < MIN_REQ_INHABITED || numberInhabited > MAX_REQ_INHABITED) {
         planets.clear();
 
-        float dist = SUN_RADIUS + N(30);
+        float dist = SUN_RADIUS + N(50);
 
         for (int i = 0; i < NUM_PLANETS; i++) {
             Planet planet(dist);
