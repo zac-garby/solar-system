@@ -6,6 +6,10 @@
 #include "game.h"
 
 Game::Game() {
+    font.loadFromFile("assets/fonts/Cabin-Bold.ttf");
+    yearDisplay = sf::Text("", font, REGULAR_FONT_SIZE);
+    yearDisplay.setFillColor(sf::Color(BRIGHT_FG));
+
     sidebar = new PlanetInspector(nullptr);
 
     sun = sf::CircleShape(SUN_RADIUS, 50);
@@ -46,6 +50,8 @@ Game::Game() {
 }
 
 Scene *Game::update(float dt) {
+    elapsed += dt * 1000;
+
     for (auto &planet : planets) {
         planet.update(this, dt);
     }
@@ -76,7 +82,14 @@ Scene *Game::update(float dt) {
         }
     }
 
+    int date, month, year;
+    std::tie(date, month, year) = getDate();
+
+    yearDisplay.setString(std::to_string(date) + "/" + std::to_string(month) + "/" + std::to_string(year));
+
     sidebar->update(dt);
+
+    getDate();
 
     return nullptr;
 }
@@ -101,6 +114,10 @@ void Game::render(sf::RenderWindow *win) {
     for (auto &planet : planets) {
         planet.render(win);
     }
+
+    sf::FloatRect ydBounds = yearDisplay.getGlobalBounds();
+    yearDisplay.setPosition(WIDTH - ydBounds.width - N(10), N(10));
+    win->draw(yearDisplay);
 
     sidebar->render(win);
 }
@@ -246,4 +263,34 @@ void Game::renderRelationships(sf::RenderWindow *win) {
         rect.setRotation(-angle * (180 / PI) + 90);
         win->draw(rect);
     }
+}
+
+std::tuple<int, int, int> Game::getDate() {
+    int millisPerDay = (TIMESCALE * 60 * 1000) / 365;
+    int day = elapsed / millisPerDay;
+
+    int months[] = {
+            31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+    };
+
+    int date = 0, month = 0, year = 0, daysLeft = months[month];
+
+    for (int i = 0; i < day; i++) {
+        if (daysLeft == 0) {
+            month++;
+            date = 0;
+
+            if (month >= 12) {
+                month = 0;
+                year++;
+            }
+
+            daysLeft = months[month];
+        }
+
+        date++;
+        daysLeft--;
+    }
+
+    return {date, month + 1, year};
 }

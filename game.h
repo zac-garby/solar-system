@@ -30,6 +30,9 @@ class PlanetRelationships;
  */
 class Game : public Scene {
 
+    // The milliseconds elapsed since the game started
+    unsigned int elapsed = 0;
+
     // The generated planets
     std::vector<Planet> planets;
 
@@ -51,6 +54,9 @@ class Game : public Scene {
     // planet on planet drag operations
     sf::RectangleShape dragLine;
 
+    sf::Font font;
+    sf::Text yearDisplay;
+
     // Whether the player is dragging from a planet
     // at the moment
     bool dragging;
@@ -71,6 +77,8 @@ public:
     void render(sf::RenderWindow*) override;
     Scene *handleEvent(sf::Event*) override;
     void removeSidebar();
+
+    std::tuple<int, int, int> getDate();
 
     // The spaceships currently flying around.
     std::vector<Spaceship> ships;
