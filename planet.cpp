@@ -103,6 +103,16 @@ void Planet::update(Game* game, float dt) {
         shipQueue.pop_back();
         game->ships.push_back(ship);
     }
+
+    // Update Population using logistic model
+    int initialPop = resources.store[ResourceType::Population]; // Initial population of planet
+    double k = 0.1;                                             // Relative growth rate coefficient
+    double K = MAX_POPULATION * 0.7;                            // Carrying capacity (threshold where population starts decreasing)
+    double A = (K - initialPop) / initialPop;
+    double eulerConst = std::exp(1.0);
+    if (initialPop != 0) {
+        resources.store[ResourceType::Population] = K / (1 + A * pow(eulerConst,(-k * dt)));
+    }
 }
 
 sf::Vector2f Planet::getPosition(sf::Vector2f center) {

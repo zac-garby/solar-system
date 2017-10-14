@@ -10,6 +10,7 @@
 #include <cmath>
 #include <vector>
 #include <iostream>
+#include <math.h>
 
 #include "config.h"
 #include "resource.h"
