@@ -18,6 +18,11 @@ class PlanetRelationships {
     std::map<std::pair<Planet*, Planet*>, float> relations;
 
 public:
+    PlanetRelationships();
+
+    // Initialise all graph edges to 0
+    explicit PlanetRelationships(std::vector<Planet*> planets);
+
     // Gets the relationship between two planets
     float get(Planet*, Planet*);
 

@@ -13,12 +13,14 @@
 #include "spaceship.h"
 #include "mainmenu.h"
 #include "sidebar.h"
-#include "planet_relationships.h"
 
 // Forward declare Spaceship and Sidebar, because
 // of a circular dependency
 class Spaceship;
 class Sidebar;
+class PlanetRelationships;
+
+#include "planet_relationships.h"
 
 /** class Game : public Scene
  *
@@ -30,6 +32,9 @@ class Game : public Scene {
 
     // The generated planets
     std::vector<Planet> planets;
+
+    // The planet relationship graph
+    PlanetRelationships *relationships;
 
     // The selected planet. Used for dragging
     // from one planet to another

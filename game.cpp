@@ -35,6 +35,11 @@ Game::Game() {
         }
     }
 
+    std::vector<Planet*> pptrs;
+    for (auto &planet : planets) pptrs.push_back(&planet);
+
+    relationships = new PlanetRelationships(pptrs);
+
     dragLine = sf::RectangleShape(sf::Vector2f(DRAG_LINE_WIDTH, DRAG_LINE_WIDTH));
     dragLine.setOrigin(DRAG_LINE_WIDTH / 2, DRAG_LINE_WIDTH / 2);
     dragLine.setFillColor(sf::Color(DRAG_LINE_COLOUR));

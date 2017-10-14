@@ -4,6 +4,23 @@
 
 #include "planet_relationships.h"
 
+PlanetRelationships::PlanetRelationships() {
+    relations = {};
+}
+
+PlanetRelationships::PlanetRelationships(std::vector<Planet*> planets) {
+    for (int i = 0; i < planets.size(); i++) {
+        Planet *a = planets[i];
+
+        for (int j = i + 1; j < planets.size(); j++) {
+            Planet *b = planets[j];
+
+            std::pair<Planet*, Planet*> pair(a, b);
+            relations[pair] = 0;
+        }
+    }
+}
+
 float PlanetRelationships::get(Planet *a, Planet *b) {
     std::pair<Planet*, Planet*> pair(a, b);
 
