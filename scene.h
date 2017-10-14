@@ -9,11 +9,17 @@
 
 using namespace std;
 
+/**
+ * A very basic class which other scenes will extend.
+ *
+ * If update() or handleEvent() returns non-null, the game should
+ * switch to the returned scene.
+ */
 class Scene {
 public:
-    virtual Scene *update(float) { return NULL; };
+    virtual Scene *update(float) { return nullptr; };
     virtual void render(sf::RenderWindow*) {};
-    virtual Scene *handleEvent(sf::Event*) { return NULL; };
+    virtual Scene *handleEvent(sf::Event*) { return nullptr; };
 };
 
 
