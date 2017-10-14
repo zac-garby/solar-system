@@ -236,11 +236,12 @@ void Game::renderRelationships(sf::RenderWindow *win) {
         float length = sqrtf(diff.x * diff.x + diff.y * diff.y);
         float angle = atan2f(diff.x, diff.y);
 
-        float r = 128 * relationship + 128;
-        float g = 255 - r;
+        float r = 128 * -relationship + 127;
+        float g = 256 - r;
+        float alpha = abs(relationship) * 80;
 
         sf::RectangleShape rect(sf::Vector2f(length, N(1.5f)));
-        rect.setFillColor(sf::Color(sf::Uint8(r), sf::Uint8(g), 0, 40));
+        rect.setFillColor(sf::Color(sf::Uint8(r), sf::Uint8(g), 0, sf::Uint8(alpha)));
         rect.setPosition(a->getPosition(SYSTEM_CENTER));
         rect.setRotation(-angle * (180 / PI) + 90);
         win->draw(rect);
