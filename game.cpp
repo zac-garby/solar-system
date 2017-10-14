@@ -19,13 +19,13 @@ Game::Game() {
     while (numberInhabited < MIN_REQ_INHABITED || numberInhabited > MAX_REQ_INHABITED) {
         planets.clear();
 
-        float dist = SUN_RADIUS + 100;
+        float dist = SUN_RADIUS + N(30);
 
         for (int i = 0; i < NUM_PLANETS; i++) {
             Planet planet(dist);
             planets.push_back(planet);
 
-            dist += planet.getPixelRadius() * 2 + 50;
+            dist += planet.getPixelRadius() * 2 + N(20);
         }
 
         numberInhabited = 0;
@@ -239,7 +239,7 @@ void Game::renderRelationships(sf::RenderWindow *win) {
         float r = 128 * relationship + 128;
         float g = 255 - r;
 
-        sf::RectangleShape rect(sf::Vector2f(length, 3));
+        sf::RectangleShape rect(sf::Vector2f(length, N(1.5f)));
         rect.setFillColor(sf::Color(sf::Uint8(r), sf::Uint8(g), 0, 40));
         rect.setPosition(a->getPosition(SYSTEM_CENTER));
         rect.setRotation(-angle * (180 / PI) + 90);

@@ -97,11 +97,11 @@
 
 /** Spaceships **/
 
-#define SHIP_RADIUS N(1)
+#define SHIP_RADIUS N(2)
 #define SHIP_SHAPE 6
 #define SHIP_COLOUR 220, 220, 220
-#define SHIP_SPEED 30
-#define SHIP_DRAG 0.8
+#define SHIP_SPEED N(15)
+#define SHIP_DRAG N(0.25)
 
 // Ships can only carry this many of each resource
 #define MAX_CARGO_PER_RESOURCE 5000
