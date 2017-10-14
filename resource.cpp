@@ -14,7 +14,7 @@ Resources::Resources() {
     };
 }
 
-
+// Returns the sum of two resources
 Resources Resources::operator+(Resources other) {
     Resources cp;
 
@@ -25,6 +25,8 @@ Resources Resources::operator+(Resources other) {
     return cp;
 }
 
+// Returns the left resource minus the right, i.e. for every resource
+// type, result[t] = left[t] - right[t]
 Resources Resources::operator-(Resources other) {
     Resources cp;
 
