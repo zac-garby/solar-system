@@ -16,6 +16,7 @@
 *.lib
 *.exe
 *.out
+solar_system
 *.app
 .idea/*
 cmake-build-debug/
@@ -54,3 +55,5 @@ cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
+.idea/
+solar_system

@@ -204,9 +204,3 @@ void SliderWidget::updateValPopover() {
     valPopover.setOrigin(valBounds.width / 2, valBounds.height / 2);
 }
 
-void SliderWidget::setMax(float newMax) {
-    max = newMax;
-
-    setProgress(getProgress());
-    update(0, false, -1, -1);
-}

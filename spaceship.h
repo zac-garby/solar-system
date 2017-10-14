@@ -19,7 +19,10 @@ class Spaceship {
     Planet *sender, *destination;
     sf::Vector2f position, velocity;
 
+    // Gets the direction to the destination planet
     sf::Vector2f getDirectionToDestination();
+
+    // Checks whether the ship has reached its destination
     bool hasReachedDestination();
 
 public:
@@ -31,6 +34,7 @@ public:
     bool delivered;
     Resources resources;
 
+    // The next ID to be assigned to a ship
     static unsigned int nextID;
 };
 

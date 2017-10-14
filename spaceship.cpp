@@ -11,12 +11,16 @@ Spaceship::Spaceship(Planet *sender, Planet *destination, Resources resources):
         destination(destination),
         resources(resources) {
 
+    // Take required resources from sender
     sender->resources = sender->resources - resources;
 
+    // It hasn't delivered its resources yet
     delivered = false;
 
+    // Assign a unique ID
     id = nextID++;
 
+    // Create CircleShape to render
     shape = sf::CircleShape(SHIP_RADIUS, SHIP_SHAPE);
     shape.setFillColor(sf::Color(SHIP_COLOUR));
     shape.setOrigin(SHIP_RADIUS, SHIP_RADIUS);
@@ -24,6 +28,7 @@ Spaceship::Spaceship(Planet *sender, Planet *destination, Resources resources):
     position = sender->getPosition(SYSTEM_CENTER);
     shape.setPosition(position);
 
+    // Initial velocity = {0, 0}
     velocity.x = 0;
     velocity.y = 0;
 }

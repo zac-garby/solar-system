@@ -7,6 +7,10 @@
 
 #include <map>
 
+/** ResourceType
+ *
+ * A type of resource, e.g. metal.
+ */
 enum ResourceType {
     Metal,
     Population,
@@ -16,6 +20,11 @@ enum ResourceType {
 
 typedef std::map<ResourceType, int> Store;
 
+/** Resources
+ *
+ * Contains a Store (std::map<ResourceType, int>) and
+ * some useful operators.
+ */
 class Resources {
 public:
     Store store;
@@ -23,6 +32,9 @@ public:
     Resources();
     Resources operator+(Resources);
     Resources operator-(Resources);
+
+    // Checks if the given resources could be removed from this,
+    // to still have >= 0 resources for each type.
     bool operator>(Resources);
 };
 

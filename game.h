@@ -14,23 +14,50 @@
 #include "mainmenu.h"
 #include "sidebar.h"
 
+// Forward declare Spaceship and Sidebar, because
+// of a circular dependency
 class Spaceship;
 class Sidebar;
 
+/** class Game : public Scene
+ *
+ * Game is the scene you'll see most of the time.
+ * It is the one where the actual game takes place,
+ * i.e. planets are rendered, everything happens.
+ */
 class Game : public Scene {
+
+    // The generated planets
     std::vector<Planet> planets;
+
+    // The selected planet. Used for dragging
+    // from one planet to another
     Planet *selected = nullptr;
+
+    // The sun's CircleShape instance
     sf::CircleShape sun;
+
+    // The current sidebar instance. Can be any
+    // subclass of Sidebar
     Sidebar *sidebar;
+
+    // The line connected the sender to the destination
+    // planet on planet drag operations
     sf::RectangleShape dragLine;
+
+    // Whether the player is dragging from a planet
+    // at the moment
     bool dragging;
 
+    // Some abstractions/helpers
     void mouseDown(sf::Vector2f);
     void mouseUp(sf::Vector2f);
     void selectPlanet(Planet *);
     void positionDragLine(sf::Window*);
 
 public:
+    // Initialises the game's properties.
+    // Ensures a valid amount of planets are generated.
     Game();
 
     Scene *update(float) override;
@@ -38,6 +65,7 @@ public:
     Scene *handleEvent(sf::Event*) override;
     void removeSidebar();
 
+    // The spaceships currently flying around.
     std::vector<Spaceship> ships;
 };
 
