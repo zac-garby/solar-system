@@ -2,6 +2,7 @@
 // Created by Zac G on 11/10/2017.
 //
 
+#include <functional>
 #include "widget_list.h"
 
 WidgetList::WidgetList() {

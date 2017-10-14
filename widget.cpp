@@ -2,6 +2,7 @@
 // Created by Zac G on 11/10/2017.
 //
 
+#include <functional>
 #include <utility>
 #include "widget.h"
 

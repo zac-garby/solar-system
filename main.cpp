@@ -1,3 +1,4 @@
+#include <functional>
 #include <SFML/Graphics.hpp>
 
 #include "config.h"

@@ -2,6 +2,7 @@
 // Created by Zac G on 10/10/2017.
 //
 
+#include <functional>
 #include "spaceship.h"
 
 unsigned int Spaceship::nextID = 0;

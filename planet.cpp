@@ -2,6 +2,7 @@
 // Created by Zac G on 08/10/2017.
 //
 
+#include <functional>
 #include "planet.h"
 
 float randRange(float min, float max) {
