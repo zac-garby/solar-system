@@ -54,6 +54,9 @@ class Game : public Scene {
     // planet on planet drag operations
     sf::RectangleShape dragLine;
 
+    sf::Font font;
+    sf::Text yearDisplay;
+
     // Whether the player is dragging from a planet
     // at the moment
     bool dragging;

@@ -6,6 +6,10 @@
 #include "game.h"
 
 Game::Game() {
+    font.loadFromFile("assets/fonts/Cabin-Bold.ttf");
+    yearDisplay = sf::Text("", font, REGULAR_FONT_SIZE);
+    yearDisplay.setFillColor(sf::Color(BRIGHT_FG));
+
     sidebar = new PlanetInspector(nullptr);
 
     sun = sf::CircleShape(SUN_RADIUS, 50);
@@ -78,6 +82,10 @@ Scene *Game::update(float dt) {
         }
     }
 
+    sf::FloatRect ydBounds = yearDisplay.getGlobalBounds();
+    yearDisplay.setPosition(WIDTH - ydBounds.width - N(10), N(10));
+    yearDisplay.setString(std::to_string(getYear()) + " AD");
+
     sidebar->update(dt);
 
     return nullptr;
@@ -103,6 +111,8 @@ void Game::render(sf::RenderWindow *win) {
     for (auto &planet : planets) {
         planet.render(win);
     }
+
+    win->draw(yearDisplay);
 
     sidebar->render(win);
 }
