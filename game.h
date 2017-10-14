@@ -77,7 +77,8 @@ public:
     void render(sf::RenderWindow*) override;
     Scene *handleEvent(sf::Event*) override;
     void removeSidebar();
-    unsigned int getYear();
+
+    std::tuple<int, int, int> getDate();
 
     // The spaceships currently flying around.
     std::vector<Spaceship> ships;
