@@ -5,11 +5,16 @@
 #ifndef SOLAR_SYSTEM_CONFIG_H
 #define SOLAR_SYSTEM_CONFIG_H
 
+
 /** Meta **/
 
+#define ASSUMED_WIDTH 1920.f
+#define WIDTH_RATIO (sf::VideoMode::getDesktopMode().width / ASSUMED_WIDTH)
+#define N(n) ((n) * WIDTH_RATIO)
+
 // The dimensions of the window
-#define WIDTH 2200
-#define HEIGHT 1500
+#define WIDTH N(1000)
+#define HEIGHT N(700)
 #define HALF_WIDTH (WIDTH / 2)
 #define HALF_HEIGHT (HEIGHT / 2)
 
@@ -22,26 +27,28 @@
 #define SYSTEM_CENTER sf::Vector2f(SYSTEM_X, SYSTEM_Y)
 
 // Font sizes
-#define REGULAR_FONT_SIZE 38
-#define TITLE_FONT_SIZE (REGULAR_FONT_SIZE * 2)
+#define REGULAR_FONT_SIZE N(14)
+#define TITLE_FONT_SIZE N(REGULAR_FONT_SIZE * 2 / 3)
 
 // Widget dimensions
-#define WIDGET_MARGIN 50
-#define WIDGET_PADDING 10
+#define WIDGET_MARGIN N(15)
+#define WIDGET_PADDING N(4)
 
-#define BUTTON_HEIGHT 80
+#define BUTTON_HEIGHT N(25)
 
-#define SLIDER_TRACK_HEIGHT 15
-#define SLIDER_HANDLE_HEIGHT 60
-#define SLIDER_HANDLE_WIDTH 25
-#define SLIDER_LABEL_GAP 30
+#define SLIDER_TRACK_HEIGHT N(5)
+#define SLIDER_HANDLE_HEIGHT N(20)
+#define SLIDER_HANDLE_WIDTH N(8)
+#define SLIDER_LABEL_GAP N(10)
 
 // The width of the line created when
 // dragging one line to another
-#define DRAG_LINE_WIDTH 5
+#define DRAG_LINE_WIDTH N(2)
+
 
 /** Constants **/
 #define PI 3.14159f
+
 
 /** Colours **/
 #define CLEAR_COLOUR         20,  20,  20
@@ -87,13 +94,14 @@
 #define MIN_PLANET_REL (-1.f)
 #define MAX_PLANET_REL (+1.f)
 
+
 /** Spaceships **/
 
-#define SHIP_RADIUS 3
+#define SHIP_RADIUS N(2)
 #define SHIP_SHAPE 6
 #define SHIP_COLOUR 220, 220, 220
-#define SHIP_SPEED 30
-#define SHIP_DRAG 0.8
+#define SHIP_SPEED N(15)
+#define SHIP_DRAG N(0.25)
 
 // Ships can only carry this many of each resource
 #define MAX_CARGO_PER_RESOURCE 5000

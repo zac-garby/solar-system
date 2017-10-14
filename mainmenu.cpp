@@ -20,7 +20,7 @@ MainMenu::MainMenu() {
     titleText.setPosition(HALF_WIDTH - bounds.width / 2, HEIGHT * 0.1f - bounds.height / 2);
 
     // Initialise the play button, with its orbit.
-    makeButton(&playButton, &playOrbit, &playLabel, "Play", HEIGHT, 130, -PI / 2);
+    makeButton(&playButton, &playOrbit, &playLabel, "Play", HEIGHT, N(45), -PI / 2);
 }
 
 Scene *MainMenu::update(float) {
@@ -87,7 +87,7 @@ void MainMenu::makeButton(
     text->setString(label);
     text->setCharacterSize(radius / 2);
     sf::FloatRect textBounds = text->getLocalBounds();
-    text->setOrigin(textBounds.width / 2, textBounds.height / 2 + 10);
+    text->setOrigin(textBounds.width / 2, textBounds.height / 2 + N(3));
     text->setPosition(orbit->getPosition() + ppos);
     text->setFillColor(sf::Color(CLEAR_COLOUR));
 }

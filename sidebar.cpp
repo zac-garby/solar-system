@@ -62,7 +62,7 @@ PlanetInspector::PlanetInspector(Planet *planet) {
     // this sidebar is active, but no planet is selected.
     noPlanet.setFont(header);
     noPlanet.setString("No planet selected...");
-    noPlanet.setCharacterSize(60);
+    noPlanet.setCharacterSize(N(20));
     noPlanet.setFillColor(sf::Color(NO_PLANET_FG));
     sf::FloatRect bounds = noPlanet.getLocalBounds();
     noPlanet.setPosition(

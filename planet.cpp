@@ -69,10 +69,10 @@ Planet::Planet(float distance) {
     shape.setFillColor(colour);
     shape.setOrigin(pixRadius, pixRadius);
 
-    orbit = sf::CircleShape(distanceFromSun, 80);
+    orbit = sf::CircleShape(distanceFromSun, 100);
     orbit.setFillColor(sf::Color::Transparent);
     orbit.setOutlineColor(sf::Color(ORBIT_COLOUR));
-    orbit.setOutlineThickness(5);
+    orbit.setOutlineThickness(N(2));
     orbit.setPosition(SYSTEM_X, SYSTEM_Y);
     orbit.setOrigin(distanceFromSun, distanceFromSun);
 
@@ -81,7 +81,7 @@ Planet::Planet(float distance) {
 }
 
 float Planet::getPixelRadius() {
-    return radius / 1000;
+    return radius / (ASSUMED_WIDTH / WIDTH_RATIO);
 }
 
 void Planet::render(sf::RenderWindow *win) {

@@ -17,7 +17,7 @@ void TextWidget::render(sf::RenderWindow *win) {
 }
 
 float TextWidget::getHeight() {
-    return REGULAR_FONT_SIZE + 10;
+    return REGULAR_FONT_SIZE + N(3.5f);
 }
 
 void TextWidget::setPosition(float x, float y) {
@@ -40,7 +40,7 @@ void TitleWidget::render(sf::RenderWindow *win) {
 }
 
 float TitleWidget::getHeight() {
-    return TITLE_FONT_SIZE + 10;
+    return TITLE_FONT_SIZE + N(3.5f);
 }
 
 void TitleWidget::setPosition(float x, float y) {
