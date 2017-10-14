@@ -2,6 +2,8 @@
 
 ![](screenshot/screenshot.png)
 
+:star: **Star** the repository if you like it :)
+
 Solar System is a strategy arcade game written with SFML, in which you have to send resources to and
 from planets to try to keep the resource balance even to prevent planets from attacking each other.
 
