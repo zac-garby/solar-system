@@ -16,6 +16,7 @@
 *.lib
 *.exe
 *.out
+solar_system
 *.app
 .idea/*
 cmake-build-debug/
