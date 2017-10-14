@@ -22,29 +22,57 @@ class Planet {
     sf::CircleShape shape;
     sf::CircleShape orbit;
 
+    // The ships ready to be launched. This is necessary
+    // because the Game instance isn't accessable from launchShip(),
+    // so update() iterates this queue and launches all the ships in it.
     std::vector<Spaceship> shipQueue;
 
 public:
+    // The planet's name
     std::string name;
+
+    // The planet's colour
     sf::Color colour;
+
+    // The planet's resource store
     Resources resources;
 
+    // The properties. This might be moved to its own struct
+    // in the future.
     float radius;           // x10^2AU
     float distanceFromSun;  // miles
     float mass;             // yg (yottagrams)
     float angle;            // º
     float speed;            // px/s
 
-    explicit Planet(float);
+    // Explicit since there's only one parameter.
+    explicit Planet(float radius);
+
     void render(sf::RenderWindow*);
     void renderOrbit(sf::RenderWindow*);
-    void update(Game*, float);
+    void update(Game*, float dt);
+
+    // Calculates the planet's radius in pixels
     float getPixelRadius();
+
+    // Checks whether the given vector is inside
+    // the planet's bounds
     bool contains(sf::Vector2f);
+
+    // Launches a ship from this planet with the
+    // given resources, towards the specified planet.
     void launchShip(Resources, Planet*);
+
+    // Gets the current position relative to the
+    // parameter.
     sf::Vector2f getPosition(sf::Vector2f);
+
+    // Generates the name of the inhabitants. It is
+    // determinate (i.e. not random,) but if it was,
+    // a few things would have to change.
     std::string getInhabitantName();
 
+    // Generates a random planet name.
     static std::string randomName();
 };
 

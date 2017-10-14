@@ -4,6 +4,7 @@
 
 #include "planet.h"
 
+// Selects a random float in the range of min to max.
 float randRange(float min, float max) {
     float random = ((float) rand()) / (float) RAND_MAX;
     float diff = max - min;
@@ -12,6 +13,8 @@ float randRange(float min, float max) {
     return min + r;
 }
 
+// Selects a random colour out of a list of
+// 14. They're all quite nice.
 sf::Color randomColour() {
     std::vector<sf::Color> colours{
             sf::Color( 50, 150, 232),
@@ -73,6 +76,7 @@ Planet::Planet(float distance) {
     orbit.setPosition(SYSTEM_X, SYSTEM_Y);
     orbit.setOrigin(distanceFromSun, distanceFromSun);
 
+    // For testing, start all planets with 7500 metal
     resources.store[Metal] = 7500;
 }
 
