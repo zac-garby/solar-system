@@ -13,6 +13,7 @@
 #include "spaceship.h"
 #include "mainmenu.h"
 #include "sidebar.h"
+#include "planet_relationships.h"
 
 // Forward declare Spaceship and Sidebar, because
 // of a circular dependency
