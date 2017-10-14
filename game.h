@@ -60,6 +60,7 @@ class Game : public Scene {
     void mouseUp(sf::Vector2f);
     void selectPlanet(Planet *);
     void positionDragLine(sf::Window*);
+    void renderRelationships(sf::RenderWindow*);
 
 public:
     // Initialises the game's properties.
