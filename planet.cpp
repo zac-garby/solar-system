@@ -81,7 +81,7 @@ Planet::Planet(float distance) {
 }
 
 float Planet::getPixelRadius() {
-    return radius / 1000;
+    return radius / (ASSUMED_WIDTH / WIDTH_RATIO);
 }
 
 void Planet::render(sf::RenderWindow *win) {
