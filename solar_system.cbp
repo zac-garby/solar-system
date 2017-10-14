@@ -106,6 +106,12 @@
 		<Unit filename="/Users/zacg/code/c++/solar-system/planet.h">
 			<Option target="solar_system"/>
 		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/planet_relationships.cpp">
+			<Option target="solar_system"/>
+		</Unit>
+		<Unit filename="/Users/zacg/code/c++/solar-system/planet_relationships.h">
+			<Option target="solar_system"/>
+		</Unit>
 		<Unit filename="/Users/zacg/code/c++/solar-system/resource.cpp">
 			<Option target="solar_system"/>
 		</Unit>

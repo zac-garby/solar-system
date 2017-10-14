@@ -35,6 +35,11 @@ Game::Game() {
         }
     }
 
+    std::vector<Planet*> pptrs;
+    for (auto &planet : planets) pptrs.push_back(&planet);
+
+    relationships = new PlanetRelationships(pptrs);
+
     dragLine = sf::RectangleShape(sf::Vector2f(DRAG_LINE_WIDTH, DRAG_LINE_WIDTH));
     dragLine.setOrigin(DRAG_LINE_WIDTH / 2, DRAG_LINE_WIDTH / 2);
     dragLine.setFillColor(sf::Color(DRAG_LINE_COLOUR));
@@ -84,6 +89,8 @@ void Game::render(sf::RenderWindow *win) {
     for (auto &planet : planets) {
         planet.renderOrbit(win);
     }
+
+    renderRelationships(win);
 
     if (dragging) win->draw(dragLine);
 
@@ -205,4 +212,37 @@ void Game::positionDragLine(sf::Window *win) {
     dragLine.setPosition(selPos);
     dragLine.setSize(sf::Vector2f(length, DRAG_LINE_WIDTH));
     dragLine.setRotation(-angle * (180 / PI) + 90);
+}
+
+void Game::renderRelationships(sf::RenderWindow *win) {
+    std::vector<std::tuple<Planet*, Planet*, float>> edges;
+
+    if (selected != nullptr) {
+        for (auto &edge : relationships->relations) {
+            if (edge.first.first == selected || edge.first.second == selected)
+                edges.push_back({edge.first.first, edge.first.second, edge.second});
+        }
+    } else {
+        for (auto &edge : relationships->relations) edges.push_back({edge.first.first, edge.first.second, edge.second});
+    }
+
+    for (auto &edge : edges) {
+        float relationship;
+        Planet *a, *b;
+
+        std::tie(a, b, relationship) = edge;
+
+        sf::Vector2f diff = b->getPosition(SYSTEM_CENTER) - a->getPosition(SYSTEM_CENTER);
+        float length = sqrtf(diff.x * diff.x + diff.y * diff.y);
+        float angle = atan2f(diff.x, diff.y);
+
+        float r = 128 * relationship + 128;
+        float g = 255 - r;
+
+        sf::RectangleShape rect(sf::Vector2f(length, 3));
+        rect.setFillColor(sf::Color(sf::Uint8(r), sf::Uint8(g), 0, 40));
+        rect.setPosition(a->getPosition(SYSTEM_CENTER));
+        rect.setRotation(-angle * (180 / PI) + 90);
+        win->draw(rect);
+    }
 }

@@ -83,6 +83,10 @@
 #define MIN_REQ_INHABITED 2
 #define MAX_REQ_INHABITED 4
 
+// The minimum and maximum relation bounds
+#define MIN_PLANET_REL (-1.f)
+#define MAX_PLANET_REL (+1.f)
+
 /** Spaceships **/
 
 #define SHIP_RADIUS 3

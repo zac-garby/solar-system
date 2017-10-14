@@ -18,6 +18,9 @@
 // of a circular dependency
 class Spaceship;
 class Sidebar;
+class PlanetRelationships;
+
+#include "planet_relationships.h"
 
 /** class Game : public Scene
  *
@@ -29,6 +32,9 @@ class Game : public Scene {
 
     // The generated planets
     std::vector<Planet> planets;
+
+    // The planet relationship graph
+    PlanetRelationships *relationships;
 
     // The selected planet. Used for dragging
     // from one planet to another
@@ -54,6 +60,7 @@ class Game : public Scene {
     void mouseUp(sf::Vector2f);
     void selectPlanet(Planet *);
     void positionDragLine(sf::Window*);
+    void renderRelationships(sf::RenderWindow*);
 
 public:
     // Initialises the game's properties.

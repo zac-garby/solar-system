@@ -14,7 +14,7 @@ set(SOURCE_FILES
         planet.h
         scene.h
         sidebar.cpp
-        sidebar.h spaceship.cpp spaceship.h resource.cpp resource.h widget.cpp widget.h widget_list.cpp widget_list.h)
+        sidebar.h spaceship.cpp spaceship.h resource.cpp resource.h widget.cpp widget.h widget_list.cpp widget_list.h planet_relationships.cpp planet_relationships.h)
 
 add_executable(solar_system ${SOURCE_FILES})
 
