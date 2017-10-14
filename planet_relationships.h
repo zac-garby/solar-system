@@ -15,9 +15,9 @@
  * between each pair of planets.
  */
 class PlanetRelationships {
+public:
     std::map<std::pair<Planet*, Planet*>, float> relations;
 
-public:
     PlanetRelationships();
 
     // Initialise all graph edges to 0
