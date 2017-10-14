@@ -12,14 +12,20 @@
 #include "widget.h"
 #include "widget_list.h"
 
+// Forward declare Planet and Game because of circular dependencies.
 class Planet;
 class Game;
 
+/** Sidebar
+ *
+ * Sidebar is a virtual class which other sidebars should extend.
+ *
+ * It contains the background for the children, however they're expected
+ * to initialise it themselves.
+ */
 class Sidebar {
 protected:
     sf::RectangleShape background;
-    bool mouseDown;
-    float mouseX, mouseY;
 
 public:
     virtual void render(sf::RenderWindow *win) { win->draw(background); }
@@ -27,6 +33,14 @@ public:
     virtual void handleEvent(sf::Event *event) {};
 };
 
+/** PlanetInspector : public Sidebar
+ *
+ * A PlanetInspector just shows information about
+ * the planet which was clicked on.
+ *
+ * If no planet is selected, it displays a 'No
+ * planet selected' message.
+ */
 class PlanetInspector : public Sidebar {
     sf::Font body, header;
     sf::Text noPlanet;
@@ -46,6 +60,14 @@ public:
     void render(sf::RenderWindow*) override;
 };
 
+/** ShipDesigner : public Sidebar
+ *
+ * A ShipDesigner sidebar is created when a populated
+ * planet is dragged to another planet.
+ *
+ * It allows the player to select how many resources
+ * they want to send, and launch a spaceship over.
+ */
 class ShipDesigner : public Sidebar {
     sf::Font body, header;
 

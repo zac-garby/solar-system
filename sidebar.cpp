@@ -15,6 +15,9 @@ PlanetInspector::PlanetInspector(Planet *planet) {
     this->planet = planet;
 
     if (planet != nullptr) {
+
+        // Initialise and add all the widgets
+
         title = TitleWidget(&header, planet->name);
 
         widgets.addWidget(&title);
@@ -55,6 +58,8 @@ PlanetInspector::PlanetInspector(Planet *planet) {
         widgets.addWidget(&weaponary);
     }
 
+    // Create noPlanet - an sf::Text which is displayed when
+    // this sidebar is active, but no planet is selected.
     noPlanet.setFont(header);
     noPlanet.setString("No planet selected...");
     noPlanet.setCharacterSize(60);
@@ -65,6 +70,7 @@ PlanetInspector::PlanetInspector(Planet *planet) {
             HALF_HEIGHT - bounds.height / 2
     );
 
+    // Create the background rectangle
     background = sf::RectangleShape(sf::Vector2f(SIDEBAR_WIDTH, HEIGHT));
     background.setFillColor(sf::Color(SIDEBAR_BG));
 }
@@ -86,9 +92,11 @@ void PlanetInspector::render(sf::RenderWindow *win) {
 /******************/
 
 ShipDesigner::ShipDesigner(Game *game, Planet *sender, Planet *destination): sender(sender), destination(destination) {
+    // Load the required fonts
     body.loadFromFile("assets/fonts/Cabin-Regular.ttf");
     header.loadFromFile("assets/fonts/Cabin-Bold.ttf");
 
+    // Create and add the widgets
     title = TitleWidget(&header, "Ship Designer");
 
     widgets.addWidget(&title);
@@ -124,6 +132,10 @@ ShipDesigner::ShipDesigner(Game *game, Planet *sender, Planet *destination): sen
     widgets.addWidget(&space);
 
     launch = ButtonWidget(&header, "Launch");
+
+    // When launch is clicked, launch a ship from the sender
+    // containing the specified resources. Also, remove this sidebar,
+    // defaulting back to the 'No planet selected' sidebar.
     launch.callback = [=] {
         Resources resources;
         resources.store = {
@@ -143,6 +155,7 @@ ShipDesigner::ShipDesigner(Game *game, Planet *sender, Planet *destination): sen
 
     widgets.addWidget(&launch);
 
+    // Create the background
     background = sf::RectangleShape(sf::Vector2f(SIDEBAR_WIDTH, HEIGHT));
     background.setFillColor(sf::Color(SIDEBAR_BG));
 }
@@ -156,6 +169,7 @@ void ShipDesigner::render(sf::RenderWindow *win) {
 void ShipDesigner::update(float dt) {
     widgets.update(dt);
 
+    // Update the values of the sender resource indicators
     metal.setString("Metal: " + std::to_string(sender->resources.store[Metal]));
     population.setString("Population: " + std::to_string(sender->resources.store[Population]));
     food.setString("Food: " + std::to_string(sender->resources.store[Food]));
