@@ -11,15 +11,26 @@
 
 #include "config.h"
 
+/** class Widget
+ *
+ * The Widget class is the superclass of all widgets.
+ * Widgets should be used in a WidgetList (defined in
+ * widget_list.h), which will render and update them
+ * properly.
+ */
 class Widget {
 public:
     virtual void render(sf::RenderWindow*) {};
     virtual void update(float dt, bool down, float x, float y) {};
     virtual void handleEvent(sf::Event*) {};
     virtual float getHeight() { return 0; };
-    virtual void setPosition(float, float) {};
+    virtual void setPosition(float x, float y) {};
 };
 
+/** TitleWidget : public Widget
+ *
+ * The TitleWidget displays some large text.
+ */
 class TitleWidget : public Widget {
     sf::Font *font;
     std::string string;
@@ -33,6 +44,10 @@ public:
     void setPosition(float, float) override;
 };
 
+/** TextWidget : public Widget
+ *
+ * The TextWidget displays some regular text.
+ */
 class TextWidget : public Widget {
     sf::Font *font;
     std::string string;
@@ -48,6 +63,10 @@ public:
     void setString(std::string str);
 };
 
+/** SpaceWidget : public Widget
+ *
+ * The SpaceWidget is just a vertical gap of 50px.
+ */
 class SpaceWidget : public Widget {
 public:
     SpaceWidget() = default;
@@ -56,6 +75,11 @@ public:
     void setPosition(float, float) override {};
 };
 
+/** ButtonWidget : public Widget
+ *
+ * The ButtonWidget renders a box with a label,
+ * and when the box is clicked calls a function.
+ */
 class ButtonWidget : public Widget {
     sf::Font *font;
     std::string label;
@@ -74,6 +98,11 @@ public:
     std::function<void ()> callback;
 };
 
+/** SliderWidget : public Widget
+ *
+ * The SliderWidget allows the user to choose a
+ * float value from min to max, inclusive.
+ */
 class SliderWidget : public Widget {
     sf::Font *font;
     sf::Text label, valPopover;
@@ -95,7 +124,6 @@ public:
     void setPosition(float x, float y) override;
     void handleEvent(sf::Event*) override;
     void update(float dt, bool down, float x, float y) override;
-    void setMax(float newMax);
 };
 
 #endif //SOLAR_SYSTEM_WIDGET_H
