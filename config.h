@@ -93,6 +93,7 @@
 #define SHIP_SHAPE 6
 #define SHIP_COLOUR 220, 220, 220
 #define SHIP_SPEED 30
+#define SHIP_ACCELERATION 10
 #define SHIP_DRAG 0.8
 
 // Ships can only carry this many of each resource

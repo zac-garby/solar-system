@@ -33,12 +33,11 @@ Spaceship::Spaceship(Planet *sender, Planet *destination, Resources resources):
     velocity.y = 0;
 }
 
-// TODO: Maybe add slight acceleration towards the sun, to simulate gravity
 void Spaceship::update(float dt) {
     // Calculate velocity to apply
     sf::Vector2f direction = getDirectionToDestination();
-    direction.x *= SHIP_SPEED * dt;
-    direction.y *= SHIP_SPEED * dt;
+    direction.x *= SHIP_SPEED * dt + (1/(double)2) * SHIP_ACCELERATION * (dt)*(dt);
+    direction.y *= SHIP_SPEED * dt + (1/(double)2) * SHIP_ACCELERATION * (dt)*(dt);
 
     // Apply new velocity, divide by drag
     velocity += direction;
