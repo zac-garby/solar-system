@@ -19,8 +19,6 @@ In the future I want to add these features:
  - **Population increasing/decreasing**. i.e. population increases <sub>(exponentially?)</sub> over time,
     and if a planet is running low on food, *(or high on weaponary?,)* the population will decrease.
    
- - Some kind of **time scale**, e.g. 1 year = 2 minutes.
- 
  - **Inter-planetary relations**, i.e. if planet A sends loads of resources to planet B, planet B will
     like planet A more, but if they don't send anything back planet A will get a bit angry.
     
@@ -30,6 +28,7 @@ In the future I want to add these features:
  
  - Many **more planet properties**. Some ideas:
     - Biodiversity
+    - Temperature
     - Type (urban, rural, etc...)
     - **resource:** Technology
     
