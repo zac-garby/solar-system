@@ -46,6 +46,8 @@ Game::Game() {
 }
 
 Scene *Game::update(float dt) {
+    elapsed += dt * 1000;
+
     for (auto &planet : planets) {
         planet.update(this, dt);
     }
@@ -246,4 +248,8 @@ void Game::renderRelationships(sf::RenderWindow *win) {
         rect.setRotation(-angle * (180 / PI) + 90);
         win->draw(rect);
     }
+}
+
+unsigned int Game::getYear() {
+    return elapsed / 1000 / 60 / TIMESCALE;
 }

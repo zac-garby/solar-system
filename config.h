@@ -45,6 +45,8 @@
 // dragging one line to another
 #define DRAG_LINE_WIDTH N(2)
 
+// 1 game year = TIMESCALE real minutes
+#define TIMESCALE 2
 
 /** Constants **/
 #define PI 3.14159f

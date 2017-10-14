@@ -30,6 +30,9 @@ class PlanetRelationships;
  */
 class Game : public Scene {
 
+    // The milliseconds elapsed since the game started
+    unsigned int elapsed = 0;
+
     // The generated planets
     std::vector<Planet> planets;
 
@@ -71,6 +74,7 @@ public:
     void render(sf::RenderWindow*) override;
     Scene *handleEvent(sf::Event*) override;
     void removeSidebar();
+    unsigned int getYear();
 
     // The spaceships currently flying around.
     std::vector<Spaceship> ships;
