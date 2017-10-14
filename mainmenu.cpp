@@ -5,9 +5,12 @@
 #include "mainmenu.h"
 
 MainMenu::MainMenu() {
+    // Load the required fonts
     font.loadFromFile("assets/fonts/EspressoDolce.ttf");
     labelFont.loadFromFile("assets/fonts/Cabin-Bold.ttf");
 
+    // Setup the main title, positioned in the center horizontally and
+    // slightly down from the top.
     titleText.setFont(font);
     titleText.setString("Solar System");
     titleText.setCharacterSize(150);
@@ -16,6 +19,7 @@ MainMenu::MainMenu() {
     sf::FloatRect bounds = titleText.getLocalBounds();
     titleText.setPosition(HALF_WIDTH - bounds.width / 2, HEIGHT * 0.1f - bounds.height / 2);
 
+    // Initialise the play button, with its orbit.
     makeButton(&playButton, &playOrbit, &playLabel, "Play", HEIGHT, 130, -PI / 2);
 }
 
@@ -24,8 +28,10 @@ Scene *MainMenu::update(float) {
 }
 
 void MainMenu::render(sf::RenderWindow *win) {
+    // Render the title
     win->draw(titleText);
 
+    // Render the play button
     win->draw(playOrbit);
     win->draw(playButton);
     win->draw(playLabel);
@@ -34,22 +40,30 @@ void MainMenu::render(sf::RenderWindow *win) {
 Scene *MainMenu::handleEvent(sf::Event *event) {
     if (event->type == sf::Event::MouseButtonReleased) {
 
+        // Calculate pos and distance to play button to see if it was
+        // clicked. This will have to be modified when more buttons are
+        // added.
         sf::Vector2f pos(event->mouseButton.x, event->mouseButton.y);
         sf::Vector2f diff = playButton.getPosition() - pos;
 
         float distance = sqrtf(diff.x * diff.x + diff.y * diff.y);
 
+        // If the play button is clicked, go to the Game scene
         if (distance <= 130) return new Game();
     }
 
     return nullptr;
 }
 
+// Makes a main menu button in the style of a planet with an orbit.
 void MainMenu::makeButton(
         sf::CircleShape *planet, sf::CircleShape *orbit, sf::Text *text,
         std::string label, float distance, float radius, float angle) {
 
+    // The center of the orbit (below the bottom of the screen)
     sf::Vector2f center(HALF_WIDTH, HEIGHT * 1.6f);
+
+    // The position of the planet relative to the center of orbit
     sf::Vector2f ppos(
             cosf(angle) * distance,
             sinf(angle) * distance
