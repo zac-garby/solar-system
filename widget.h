@@ -6,6 +6,7 @@
 #define SOLAR_SYSTEM_WIDGET_H
 
 #include <SFML/Graphics.hpp>
+#include <functional>
 #include <cmath>
 #include <iostream>
 
