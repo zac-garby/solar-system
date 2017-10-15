@@ -54,9 +54,9 @@ Planet::Planet(float distance) {
     // Mass is radius * a random float from 0.75 to 1.25
     mass = radius * randRange(0.75, 1.25);
 
-	// biodiveristy is just the radius of the planet scaled between 0-10
-	// this assumes a bigger planey would be more diverse, etc.
-	biodiversity = (((radius - MIN_RADIUS) * 10) / (MAX_RADIUS - MIN_RADIUS));
+    // biodiveristy is just the radius of the planet scaled between 0-10
+    // this assumes a bigger planey would be more diverse, etc.
+    biodiversity = (((radius - MIN_RADIUS) * 10) / (MAX_RADIUS - MIN_RADIUS));
 
     // Angle is from 0 to 360
     angle = randRange(0, 360);
