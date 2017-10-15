@@ -57,3 +57,11 @@ compile_commands.json
 CTestTestfile.cmake
 .idea/
 solar_system
+*.vcxproj
+*.filters
+*.ilk
+*.pdb
+*.log
+*.tlog
+*.sln
+solar_system.vcxproj.user
