@@ -37,24 +37,30 @@ PlanetInspector::PlanetInspector(Planet *planet) {
         widgets.addWidget(&space);
 
         life = TextWidget(&header, "Life", true);
-        population = TextWidget(&body, "Population: " + std::to_string(planet->resources.store[Population]), false);
+        population = TextWidget(&body, "Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants", false);
+        species = TextWidget(&body, "Species: " + std::to_string(planet->resources.store[Species]) + " species", false);
         inhabitants = TextWidget(&body, "Inhabitants: " + planet->getInhabitantName(), false);
         biodiversity = TextWidget(&body, "Biodiveristy: " + std::to_string(int(planet->biodiversity)), false);
 
         widgets.addWidget(&life);
         widgets.addWidget(&population);
+        widgets.addWidget(&species);
         widgets.addWidget(&inhabitants);
         widgets.addWidget(&biodiversity);
         widgets.addWidget(&space);
 
         resources = TextWidget(&header, "Resources", true);
-        metal = TextWidget(&body, "Metal: " + std::to_string(planet->resources.store[Metal]), false);
-        populationResource = TextWidget(&body, "Population: " + std::to_string(planet->resources.store[Population]), false);
-        food = TextWidget(&body, "Food: " + std::to_string(planet->resources.store[Food]), false);
-        weaponary = TextWidget(&body, "Weaponary: " + std::to_string(planet->resources.store[Weaponary]), false);
+        metal = TextWidget(&body, "Metal: " + std::to_string(planet->resources.store[Metal]) + " tons", false);
+        wood = TextWidget(&body, "Wood: " + std::to_string(planet->resources.store[Wood]) + " tons", false);
+        water = TextWidget(&body, "Water: " + std::to_string(planet->resources.store[Water]) + " cubic feet", false);
+        populationResource = TextWidget(&body, "Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants", false);
+        food = TextWidget(&body, "Food: " + std::to_string(planet->resources.store[Food]) + " tons", false);
+        weaponary = TextWidget(&body, "Weaponary: " + std::to_string(planet->resources.store[Weaponary]) + " units", false);
 
         widgets.addWidget(&resources);
         widgets.addWidget(&metal);
+        widgets.addWidget(&wood);
+        widgets.addWidget(&water);
         widgets.addWidget(&populationResource);
         widgets.addWidget(&food);
         widgets.addWidget(&weaponary);

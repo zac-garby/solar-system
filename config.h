@@ -27,7 +27,7 @@
 #define SYSTEM_CENTER sf::Vector2f(SYSTEM_X, SYSTEM_Y)
 
 // Font sizes
-#define REGULAR_FONT_SIZE N(14)
+#define REGULAR_FONT_SIZE N(16)
 #define TITLE_FONT_SIZE N(REGULAR_FONT_SIZE * 2 / 3)
 
 // Widget dimensions
