@@ -104,7 +104,7 @@ To install CMake into your system you need to follow these instructions:
 Simply go to the project directory and run:
 
 ```
-/Applications/CMake.app/contents/bin/cmake .
+/Applications/CMake.app/Contents/bin/cmake .
 make
 ```
 
