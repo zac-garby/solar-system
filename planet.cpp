@@ -205,3 +205,7 @@ void Planet::launchShip(Resources res, Planet *destination) {
     Spaceship ship(this, destination, res);
     shipQueue.push_back(ship);
 }
+
+bool Planet::isInhabited() {
+    return resources.store[Population] > 0;
+}
