@@ -43,6 +43,12 @@ In the future I want to add these features:
     the next n years.) Technological advances might also be faster in wartime.
     
 
+## Building
+
+There are some instructions on how to build this project in
+[COMPILING.md](https://github.com/Zac-Garby/solar-system/blob/master/COMPILING.md).
+
+
 ## Contributing
 
 Before contributing to this repository, have a read of
