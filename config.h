@@ -48,6 +48,9 @@
 // 1 game year = TIMESCALE real minutes
 #define TIMESCALE 2
 
+// Time (in seconds) between sidebar updates
+#define SIDEBAR_UPDATE_TIME_S 1.0f
+
 /** Constants **/
 #define PI 3.14159f
 

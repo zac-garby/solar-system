@@ -8,7 +8,9 @@
 /** PlanetInspector **/
 /*********************/
 
-PlanetInspector::PlanetInspector(Planet *planet) {
+PlanetInspector::PlanetInspector(Planet *planet)
+    : timeLastUpdate(0.0f) {
+
     body.loadFromFile("assets/fonts/Cabin-Regular.ttf");
     header.loadFromFile("assets/fonts/Cabin-Bold.ttf");
 
@@ -91,6 +93,40 @@ void PlanetInspector::render(sf::RenderWindow *win) {
     }
 }
 
+void PlanetInspector::update(float dt) {
+    if (nullptr == planet) {
+        timeLastUpdate = 0.0f;
+        return;
+    }
+
+    timeLastUpdate += dt;
+    if (timeLastUpdate >= SIDEBAR_UPDATE_TIME_S) {
+        timeLastUpdate -= SIDEBAR_UPDATE_TIME_S;
+        updateWidgets();
+    }
+}
+
+void PlanetInspector::updateWidgets() {
+    if (nullptr == planet)
+        return;
+    
+    distance.setString("Distance from sun: " + std::to_string(int(planet->distanceFromSun / 80)) + " AU");
+    radius.setString("Radius: " + std::to_string(int(planet->radius)) + " miles");
+    mass.setString("Mass: " + std::to_string(int(planet->mass)) + " yg");
+    speed.setString("Speed: " + std::to_string(int(planet->speed)) + " miles/s");
+
+    population.setString("Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants");
+    species.setString("Species: " + std::to_string(planet->resources.store[Species]) + " species");
+    inhabitants.setString("Inhabitants: " + planet->getInhabitantName());
+    biodiversity.setString("Biodiveristy: " + std::to_string(int(planet->biodiversity)));
+
+    metal.setString("Metal: " + std::to_string(planet->resources.store[Metal]) + " tons");
+    wood.setString("Wood: " + std::to_string(planet->resources.store[Wood]) + " tons");
+    water.setString("Water: " + std::to_string(planet->resources.store[Water]) + " cubic feet");
+    populationResource.setString("Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants");
+    food.setString("Food: " + std::to_string(planet->resources.store[Food]) + " tons");
+    weaponary.setString("Weaponary: " + std::to_string(planet->resources.store[Weaponary]) + " units");
+}
 
 
 /******************/

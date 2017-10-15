@@ -53,11 +53,17 @@ class PlanetInspector : public Sidebar {
             life, population, inhabitants, species, biodiversity,
             resources, metal, populationResource, food, wood, water, weaponary;
 
+    float timeLastUpdate;
+
 public:
     Planet *planet = nullptr;
 
     explicit PlanetInspector(Planet*);
     void render(sf::RenderWindow*) override;
+    void update(float dt) override;
+
+private:
+    void updateWidgets();
 };
 
 /** ShipDesigner : public Sidebar
