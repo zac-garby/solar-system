@@ -53,15 +53,13 @@ PlanetInspector::PlanetInspector(Planet *planet) {
         metal = TextWidget(&body, "Metal: " + std::to_string(planet->resources.store[Metal]) + " tons", false);
         wood = TextWidget(&body, "Wood: " + std::to_string(planet->resources.store[Wood]) + " tons", false);
         water = TextWidget(&body, "Water: " + std::to_string(planet->resources.store[Water]) + " cubic feet", false);
-        populationResource = TextWidget(&body, "Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants", false);
-        food = TextWidget(&body, "Food: " + std::to_string(planet->resources.store[Food]) + " tons", false);
+        food = TextWidget(&body, "Food: " + std::to_string(planet->resources.store[Food]) + " units", false);
         weaponary = TextWidget(&body, "Weaponary: " + std::to_string(planet->resources.store[Weaponary]) + " units", false);
 
         widgets.addWidget(&resources);
         widgets.addWidget(&metal);
         widgets.addWidget(&wood);
         widgets.addWidget(&water);
-        widgets.addWidget(&populationResource);
         widgets.addWidget(&food);
         widgets.addWidget(&weaponary);
     }
