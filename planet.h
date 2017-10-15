@@ -45,7 +45,8 @@ public:
     float mass;             // yg (yottagrams)
     float angle;            // º
     float speed;            // px/s
-    int biodiversity;	    // between 1-10
+    float biodiversity;	    // between 1-10
+	  float capacity;         // capacity
 
     // Explicit since there's only one parameter.
     explicit Planet(float radius);

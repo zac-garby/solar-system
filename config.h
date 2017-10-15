@@ -74,6 +74,13 @@
 #define MIN_POPULATION 1000
 #define MAX_POPULATION 5000000
 
+// Bounds of possible density.
+// Should probably be tweaked.
+// Currently on minimum radius and minimum density capacity is 50k
+// On maximum radius and maximum density capacity is 9million.
+#define MIN_DENSITY 0.00001f
+#define MAX_DENSITY 0.0005f
+
 // The bounds of planet radii
 #define MIN_RADIUS 20000
 #define MAX_RADIUS 38000
