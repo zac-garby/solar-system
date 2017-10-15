@@ -76,6 +76,9 @@ public:
 
     // Generates a random planet name.
     static std::string randomName();
+
+    // A planet can be inhabitet/uninhabited.
+    bool isInhabited();
 };
 
 #endif //SOLAR_SYSTEM_PLANET_H

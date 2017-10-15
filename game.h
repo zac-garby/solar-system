@@ -67,6 +67,7 @@ class Game : public Scene {
     void selectPlanet(Planet *);
     void positionDragLine(sf::Window*);
     void renderRelationships(sf::RenderWindow*);
+    std::vector<Planet*> generatePlanets();
 
 public:
     // Initialises the game's properties.

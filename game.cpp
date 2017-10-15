@@ -17,30 +17,7 @@ Game::Game() {
     sun.setFillColor(sf::Color::Yellow);
     sun.setOrigin(SUN_RADIUS, SUN_RADIUS);
 
-    int numberInhabited = 0;
-
-    // Continuously generate new sets of planets until enough are inhabited.
-    while (numberInhabited < MIN_REQ_INHABITED || numberInhabited > MAX_REQ_INHABITED) {
-        planets.clear();
-
-        float dist = SUN_RADIUS + N(50);
-
-        for (int i = 0; i < NUM_PLANETS; i++) {
-            Planet planet(dist);
-            planets.push_back(planet);
-
-            dist += planet.getPixelRadius() * 2 + N(20);
-        }
-
-        numberInhabited = 0;
-
-        for (auto &planet : planets) {
-            if (planet.resources.store[Population] > 0) numberInhabited++;
-        }
-    }
-
-    std::vector<Planet*> pptrs;
-    for (auto &planet : planets) pptrs.push_back(&planet);
+    std::vector<Planet*> pptrs = generatePlanets();
 
     relationships = new PlanetRelationships(pptrs);
 
@@ -199,7 +176,7 @@ void Game::mouseUp(sf::Vector2f pos) {
         // If the planet is moused over, isn't selected and is populated.
         if (planet.contains(pos) &&
                 selected != &planet &&
-                selected->resources.store[Population] > 0) {
+                selected->isInhabited()) {
             sidebar = new ShipDesigner(this, selected, &planet);
 
             break;
@@ -293,4 +270,33 @@ std::tuple<int, int, int> Game::getDate() {
     }
 
     return {date, month + 1, year};
+}
+
+std::vector<Planet*> Game::generatePlanets() {
+    int numberInhabited = 0;
+
+    // Continuously generate new sets of planets until enough are inhabited.
+    while (numberInhabited < MIN_REQ_INHABITED || numberInhabited > MAX_REQ_INHABITED) {
+        planets.clear();
+
+        float dist = SUN_RADIUS + N(50);
+
+        for (int i = 0; i < NUM_PLANETS; i++) {
+            Planet planet(dist);
+            planets.push_back(planet);
+
+            dist += planet.getPixelRadius() * 2 + N(20);
+        }
+
+        numberInhabited = 0;
+
+        for (auto &planet : planets) {
+            if (planet.isInhabited()) numberInhabited++;
+        }
+    }
+
+    std::vector<Planet*> pptrs;
+    for (auto &planet : planets) pptrs.push_back(&planet);
+
+    return pptrs;
 }
