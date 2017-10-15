@@ -40,11 +40,13 @@ PlanetInspector::PlanetInspector(Planet *planet) {
         population = TextWidget(&body, "Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants", false);
         species = TextWidget(&body, "Species: " + std::to_string(planet->resources.store[Species]) + " species", false);
         inhabitants = TextWidget(&body, "Inhabitants: " + planet->getInhabitantName(), false);
+        biodiversity = TextWidget(&body, "Biodiveristy: " + std::to_string(int(planet->biodiversity)), false);
 
         widgets.addWidget(&life);
         widgets.addWidget(&population);
         widgets.addWidget(&species);
         widgets.addWidget(&inhabitants);
+        widgets.addWidget(&biodiversity);
         widgets.addWidget(&space);
 
         resources = TextWidget(&header, "Resources", true);

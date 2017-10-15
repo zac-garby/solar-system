@@ -50,7 +50,7 @@ class PlanetInspector : public Sidebar {
     WidgetList widgets;
 
     TextWidget physical, distance, radius, mass, speed,
-            life, population, inhabitants, species,
+            life, population, inhabitants, species, biodiversity,
             resources, metal, populationResource, food, wood, water, weaponary;
 
 public:
