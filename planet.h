@@ -46,7 +46,7 @@ public:
     float angle;            // º
     float speed;            // px/s
     float biodiversity;	    // between 1-10
-	  float capacity;         // capacity
+    float capacity;         // capacity
 
     // Explicit since there's only one parameter.
     explicit Planet(float radius);
