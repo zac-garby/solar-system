@@ -57,9 +57,9 @@ Planet::Planet(float distance) {
     // Mass is radius * a random float from 0.75 to 1.25
     mass = radius * randRange(0.75, 1.25);
 
-    // biodiveristy is just the radius of the planet scaled between 0-10
+    // biodiveristy is just the radius of the planet scaled between 1-10
     // this assumes a bigger planey would be more diverse, etc.
-    biodiversity = (((radius - MIN_RADIUS) * 10) / (MAX_RADIUS - MIN_RADIUS));
+    biodiversity = ((((radius - MIN_RADIUS) * (10-1)) / (MAX_RADIUS - MIN_RADIUS)) + 1);
 
     // Angle is from 0 to 360
     angle = randRange(0, 360);
@@ -108,6 +108,7 @@ void Planet::update(Game* game, float dt) {
         game->ships.push_back(ship);
     }
 
+	// TODO have people die off if there's not enough food
     // Update Population using logistic model
     int initialPop = resources.store[Population]; // Initial population of planet
     double k = 0.1;                               // Relative growth rate coefficient
@@ -118,13 +119,23 @@ void Planet::update(Game* game, float dt) {
         resources.store[Population] = int(capacity / (1 + A * pow(e, (-k * dt))));
     }
 
+	// TODO: would like to implement people management ex. # of framers, scientists, engineers, 
+	// laborers and resource production would be based of this
+	int number_of_farmers = resources.store[Population];
+
     // Update others resources stats
-    resources.store[Species] = randRange(0, 10000);
-    resources.store[Metal] = randRange(0, 10000);
-    resources.store[Wood] = randRange(0, 10000);
-    resources.store[Water] = randRange(0, 10000);
-    resources.store[Food] = randRange(0, 10000);
-    resources.store[Weaponary] = randRange(0, 10000);
+    resources.store[Species] += randRange(0, 10000);
+    resources.store[Metal] += randRange(0, 10000);
+    resources.store[Wood] += randRange(0, 10000);
+    resources.store[Water] += randRange(0, 10000);
+
+	// If there's no people their shouldn't be any weapons
+	if (resources.store[Population] > 0) {
+		resources.store[Weaponary] = randRange(0, 10000);
+	}
+
+	// Each farmer on the planet can grow food equal to the bio diversity of the planet, however each person must eats one
+	resources.store[Food] = (resources.store[Food] + (number_of_farmers * biodiversity)) - resources.store[Population];
 }
 
 sf::Vector2f Planet::getPosition(sf::Vector2f center) {
@@ -206,4 +217,8 @@ std::string Planet::randomName() {
 void Planet::launchShip(Resources res, Planet *destination) {
     Spaceship ship(this, destination, res);
     shipQueue.push_back(ship);
+}
+
+bool Planet::isInhabited() {
+    return resources.store[Population] > 0;
 }

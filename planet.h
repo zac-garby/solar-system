@@ -46,7 +46,7 @@ public:
     float angle;            // º
     float speed;            // px/s
     float biodiversity;	    // between 1-10
-	float capacity;         // capacity
+	  float capacity;         // capacity
 
     // Explicit since there's only one parameter.
     explicit Planet(float radius);
@@ -77,6 +77,9 @@ public:
 
     // Generates a random planet name.
     static std::string randomName();
+
+    // A planet can be inhabitet/uninhabited.
+    bool isInhabited();
 };
 
 #endif //SOLAR_SYSTEM_PLANET_H
