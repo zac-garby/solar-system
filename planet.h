@@ -22,6 +22,7 @@ class Game;
 class Planet {
     sf::CircleShape shape;
     sf::CircleShape orbit;
+    sf::CircleShape border;
 
     // The ships ready to be launched. This is necessary
     // because the Game instance isn't accessable from launchShip(),
@@ -53,10 +54,14 @@ public:
 
     void render(sf::RenderWindow*);
     void renderOrbit(sf::RenderWindow*);
+    void renderBorder(sf::RenderWindow*);
     void update(Game*, float dt);
 
     // Calculates the planet's radius in pixels
     float getPixelRadius();
+
+    // Calculates the planet border's radius in pixels
+    float getBorderPixelRadius();
 
     // Checks whether the given vector is inside
     // the planet's bounds
