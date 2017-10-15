@@ -51,6 +51,9 @@ Planet::Planet(float distance) {
     // Radius is from MIN_RADIUS to MAX_RADIUS
     radius = randRange(MIN_RADIUS, MAX_RADIUS);
 
+    // Find surface area and then calculate capacity based on density per area.
+    capacity = (4 * 3.14 * pow(radius, 2)) * randRange(MIN_DENSITY, MAX_DENSITY);
+
     // Mass is radius * a random float from 0.75 to 1.25
     mass = radius * randRange(0.75, 1.25);
 
@@ -108,12 +111,11 @@ void Planet::update(Game* game, float dt) {
     // Update Population using logistic model
     int initialPop = resources.store[Population]; // Initial population of planet
     double k = 0.1;                               // Relative growth rate coefficient
-    double K = MAX_POPULATION * 0.7;              // Carrying capacity (threshold where population starts decreasing)
-    double A = (K - initialPop) / initialPop;
+    double A = (capacity - initialPop) / initialPop;
     double e = std::exp(1.0);
 
     if (initialPop != 0) {
-        resources.store[Population] = int(K / (1 + A * pow(e, (-k * dt))));
+        resources.store[Population] = int(capacity / (1 + A * pow(e, (-k * dt))));
     }
 
     // Update others resources stats
