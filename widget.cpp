@@ -140,12 +140,14 @@ void SliderWidget::setPosition(float x, float y) {
 
 void SliderWidget::handleEvent(sf::Event *event) {
     sf::FloatRect handleBounds;
+	sf::FloatRect trackBounds;
 
     switch (event->type) {
         case sf::Event::MouseButtonPressed:
             handleBounds = handle.getGlobalBounds();
+			trackBounds = track.getGlobalBounds();
 
-            if (handleBounds.contains(event->mouseButton.x, event->mouseButton.y)) {
+            if (handleBounds.contains(event->mouseButton.x, event->mouseButton.y) || trackBounds.contains(event->mouseButton.x, event->mouseButton.y)) {
                 holding = true;
             }
 
