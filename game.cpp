@@ -176,7 +176,7 @@ void Game::mouseUp(sf::Vector2f pos) {
         // If the planet is moused over, isn't selected and is populated.
         if (planet.contains(pos) &&
                 selected != &planet &&
-                selected->resources.store[Population] > 0) {
+                selected->isInhabited()) {
             sidebar = new ShipDesigner(this, selected, &planet);
 
             break;
