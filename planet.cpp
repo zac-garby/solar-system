@@ -75,9 +75,6 @@ Planet::Planet(float distance) {
     orbit.setOutlineThickness(N(2));
     orbit.setPosition(SYSTEM_X, SYSTEM_Y);
     orbit.setOrigin(distanceFromSun, distanceFromSun);
-
-    // For testing, start all planets with 7500 metal
-    resources.store[Metal] = 7500;
 }
 
 float Planet::getPixelRadius() {
@@ -114,6 +111,14 @@ void Planet::update(Game* game, float dt) {
     if (initialPop != 0) {
         resources.store[Population] = int(K / (1 + A * pow(e, (-k * dt))));
     }
+
+    // Update others resources stats
+    resources.store[Species] = randRange(0, 10000);
+    resources.store[Metal] = randRange(0, 10000);
+    resources.store[Wood] = randRange(0, 10000);
+    resources.store[Water] = randRange(0, 10000);
+    resources.store[Food] = randRange(0, 10000);
+    resources.store[Weaponary] = randRange(0, 10000);
 }
 
 sf::Vector2f Planet::getPosition(sf::Vector2f center) {

@@ -13,7 +13,10 @@
  */
 enum ResourceType {
     Metal,
+    Wood,
+    Water,
     Population,
+    Species,
     Food,
     Weaponary
 };

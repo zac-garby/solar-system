@@ -8,7 +8,10 @@ Resources::Resources() {
     // Initialise all possible store fields
     store = {
             {Metal, 0},
+            {Wood, 0},
+            {Water, 0},
             {Population, 0},
+            {Species, 0},
             {Food, 0},
             {Weaponary, 0}
     };
