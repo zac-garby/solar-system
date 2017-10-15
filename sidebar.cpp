@@ -44,7 +44,7 @@ PlanetInspector::PlanetInspector(Planet *planet) {
         widgets.addWidget(&life);
         widgets.addWidget(&population);
         widgets.addWidget(&inhabitants);
-		widgets.addWidget(&biodiversity);
+        widgets.addWidget(&biodiversity);
         widgets.addWidget(&space);
 
         resources = TextWidget(&header, "Resources", true);
