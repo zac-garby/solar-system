@@ -136,6 +136,13 @@ void Planet::update(Game* game, float dt) {
 
 	// Each farmer on the planet can grow food equal to the bio diversity of the planet, however each person must eats one
 	resources.store[Food] = (resources.store[Food] + (number_of_farmers * biodiversity)) - resources.store[Population];
+
+    // If food supply is -n, kill n inhabitants and set food to 0
+    if (resources.store[Food] < 0) {
+        int magnitude = abs(resources.store[Food]);
+        resources.store[Population] -= magnitude;
+        resources.store[Food] = 0;
+    }
 }
 
 sf::Vector2f Planet::getPosition(sf::Vector2f center) {
