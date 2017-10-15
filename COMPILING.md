@@ -7,7 +7,7 @@
 
 ## Debian
 
-### dependencies
+### Dependencies
 
 To compile this program you need to install the following dependencies:
 
@@ -18,7 +18,7 @@ sudo apt-get install cmake
 sudo apt-get install libsfml-dev
 ```
 
-### compiling the project
+### Compiling the project
 
 Now go to the project directory and enter the following command:
 
@@ -27,7 +27,7 @@ cmake .
 make
 ```
 
-### run the program
+### Run the program
 
 Now you can run this program with this command:
 
@@ -37,7 +37,7 @@ Now you can run this program with this command:
 
 ## Arch Linux
 
-### dependencies
+### Dependencies
 
 To compile this program you need to install the following dependencies:
 
@@ -49,7 +49,7 @@ sudo pacman -S cmake
 sudo pacman -S sfml
 ```
 
-### compiling the project
+### Compiling the project
 
 Now go to the project directory and enter the following command:
 
@@ -58,7 +58,7 @@ cmake .
 make
 ```
 
-### run the program
+### Run the program
 
 Now you can run this program with this command:
 
@@ -68,7 +68,7 @@ Now you can run this program with this command:
 
 # Compiling on MacOS
 
-### dependencies
+### Dependencies
 
 To compile this program you need to install the XCode Command Line Tools, the SFML frameworks, and CMake.
 
@@ -99,7 +99,7 @@ To install CMake into your system you need to follow these instructions:
 2. Open the image file.
 3. Move the CMake app into the `/Applications` directory.
 
-### compiling the project
+### Compiling the project
 
 Simply go to the project directory and run:
 
@@ -108,7 +108,7 @@ Simply go to the project directory and run:
 make
 ```
 
-### run the program
+### Run the program
 
 Now you can run this program with this command:
 
