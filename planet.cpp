@@ -52,7 +52,7 @@ Planet::Planet(float distance) {
     radius = randRange(MIN_RADIUS, MAX_RADIUS);
 
     // Find surface area and then calculate capacity based on density per area.
-    capacity = (4 * 3.14 * pow(radius, 2)) * randRange(MIN_DENSITY, MAX_DENSITY);
+    capacity = (4 * PI * radius * radius) * randRange(MIN_DENSITY, MAX_DENSITY);
 
     // Mass is radius * a random float from 0.75 to 1.25
     mass = radius * randRange(0.75, 1.25);
