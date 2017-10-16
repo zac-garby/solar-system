@@ -139,6 +139,9 @@ void Planet::update(Game* game, float dt) {
 	// TODO: would like to implement people management ex. # of framers, scientists, engineers, 
 	// laborers and resource production would be based of this
 	int number_of_farmers = resources.store[Population];
+    if(number_of_farmers > farmers_cap) {
+        number_of_farmers = farmers_cap;
+    }
 
     // Update others resources stats
     resources.store[Species] += randRange(0, 10000);
@@ -152,13 +155,15 @@ void Planet::update(Game* game, float dt) {
 	}
 
 	// Each farmer on the planet can grow food equal to the bio diversity of the planet, however each person must eats one
-	resources.store[Food] = (resources.store[Food] + (number_of_farmers * biodiversity)) - resources.store[Population];
+  if(!resources.store[Population]) { // No farmers, no food
+      resources.store[Food] = 0;
+  } else {
+      resources.store[Food] = int((number_of_farmers*biodiversity)/std::sqrt(resources.store[Population]));
+  }
 
-    // If food supply is -n, kill n inhabitants and set food to 0
-    if (resources.store[Food] < 0) {
-        int magnitude = abs(resources.store[Food]);
-        resources.store[Population] -= magnitude;
-        resources.store[Food] = 0;
+    // Food cap
+    if(resources.store[Food] > food_cap) {
+        resources.store[Food] = food_cap;
     }
 }
 
