@@ -64,6 +64,17 @@ PlanetInspector::PlanetInspector(Planet *planet)
         widgets.addWidget(&water);
         widgets.addWidget(&food);
         widgets.addWidget(&weaponary);
+
+		people_management = ButtonWidget(&header, "People Management Pane");
+
+		// Open the people management pane
+		people_management.callback = [=] {
+			people_management_pane = new PeopleManagement(planet);
+		};
+
+		widgets.addWidget(&space);
+		widgets.addWidget(&people_management);
+
     }
 
     // Create noPlanet - an sf::Text which is displayed when
@@ -220,4 +231,43 @@ void ShipDesigner::update(float dt) {
 
 void ShipDesigner::handleEvent(sf::Event *event) {
     widgets.handleEvent(event);
+}
+
+/****************************/
+/** People Management Pane **/
+/****************************/
+
+PeopleManagement::PeopleManagement(Planet *planet) {
+	// Load the required fonts
+	body.loadFromFile("assets/fonts/Cabin-Regular.ttf");
+	header.loadFromFile("assets/fonts/Cabin-Bold.ttf");
+
+	// Create and add the widgets
+	title = TitleWidget(&header, "People Management");
+
+	farmersSlider = SliderWidget(&body, "Farmers", 0, min(0, 100));
+	scientistsSlider = SliderWidget(&body, "Scientists", 0, min(0, 100));
+	engineersSlider = SliderWidget(&body, "Engineers", 0, min(0, 100));
+	laborersSlider = SliderWidget(&body, "Laborers", 0, min(0, 100));
+	
+
+	widgets.addWidget(&farmersSlider);
+	widgets.addWidget(&scientistsSlider);
+	widgets.addWidget(&engineersSlider);
+	widgets.addWidget(&laborersSlider);
+	widgets.addWidget(&space);
+}
+
+void PeopleManagement::render(sf::RenderWindow *win) {
+	Sidebar::render(win);
+
+	widgets.render(win);
+}
+
+void PeopleManagement::update(float dt) {
+	widgets.update(dt);
+}
+
+void PeopleManagement::handleEvent(sf::Event *event) {
+	widgets.handleEvent(event);
 }
