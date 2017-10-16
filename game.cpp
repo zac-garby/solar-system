@@ -80,6 +80,10 @@ void Game::render(sf::RenderWindow *win) {
         planet.renderOrbit(win);
     }
 
+    if (nullptr != selected) {
+        selected->renderBorder(win);
+    }
+
     renderRelationships(win);
 
     if (dragging) win->draw(dragLine);

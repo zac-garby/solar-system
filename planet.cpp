@@ -82,10 +82,21 @@ Planet::Planet(float distance) {
     orbit.setOutlineThickness(N(2));
     orbit.setPosition(SYSTEM_X, SYSTEM_Y);
     orbit.setOrigin(distanceFromSun, distanceFromSun);
+
+    float borderPixRadius = getBorderPixelRadius();
+    border = sf::CircleShape(borderPixRadius);
+    border.setFillColor(sf::Color::Transparent);
+    border.setOutlineColor(colour);
+    border.setOutlineThickness(PLANET_BORDER_THICKNESS);
+    border.setOrigin(borderPixRadius, borderPixRadius);
 }
 
 float Planet::getPixelRadius() {
     return radius / (ASSUMED_WIDTH / WIDTH_RATIO);
+}
+
+float Planet::getBorderPixelRadius() {
+    return getPixelRadius() + PLANET_BORDER_EXTRA_PIXELS + PLANET_BORDER_THICKNESS;
 }
 
 void Planet::render(sf::RenderWindow *win) {
@@ -96,11 +107,17 @@ void Planet::renderOrbit(sf::RenderWindow *win) {
     win->draw(orbit);
 }
 
+void Planet::renderBorder(sf::RenderWindow *win) {
+    win->draw(border);
+}
+
 void Planet::update(Game* game, float dt) {
     float angleDiff = atanf(speed / distanceFromSun);
     angle += angleDiff * dt;
 
-    shape.setPosition(getPosition(SYSTEM_CENTER));
+    sf::Vector2f newPosition = getPosition(SYSTEM_CENTER);
+    shape.setPosition(newPosition);
+    border.setPosition(newPosition);
 
     while (shipQueue.size() > 0) {
         Spaceship ship = shipQueue.back();

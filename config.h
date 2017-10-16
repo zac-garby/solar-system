@@ -88,6 +88,10 @@
 #define MIN_RADIUS 20000
 #define MAX_RADIUS 38000
 
+// The extra pixels added to the planet radius to calculate its border
+#define PLANET_BORDER_EXTRA_PIXELS 10
+#define PLANET_BORDER_THICKNESS N(2)
+
 // The bounds of planet speed
 #define MIN_PLANET_SPEED 25
 #define MAX_PLANET_SPEED 40
