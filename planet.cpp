@@ -82,10 +82,21 @@ Planet::Planet(float distance) {
     orbit.setOutlineThickness(N(2));
     orbit.setPosition(SYSTEM_X, SYSTEM_Y);
     orbit.setOrigin(distanceFromSun, distanceFromSun);
+
+    float borderPixRadius = getBorderPixelRadius();
+    border = sf::CircleShape(borderPixRadius);
+    border.setFillColor(sf::Color::Transparent);
+    border.setOutlineColor(colour);
+    border.setOutlineThickness(PLANET_BORDER_THICKNESS);
+    border.setOrigin(borderPixRadius, borderPixRadius);
 }
 
 float Planet::getPixelRadius() {
     return radius / (ASSUMED_WIDTH / WIDTH_RATIO);
+}
+
+float Planet::getBorderPixelRadius() {
+    return getPixelRadius() + PLANET_BORDER_EXTRA_PIXELS + PLANET_BORDER_THICKNESS;
 }
 
 void Planet::render(sf::RenderWindow *win) {
@@ -96,11 +107,17 @@ void Planet::renderOrbit(sf::RenderWindow *win) {
     win->draw(orbit);
 }
 
+void Planet::renderBorder(sf::RenderWindow *win) {
+    win->draw(border);
+}
+
 void Planet::update(Game* game, float dt) {
     float angleDiff = atanf(speed / distanceFromSun);
     angle += angleDiff * dt;
 
-    shape.setPosition(getPosition(SYSTEM_CENTER));
+    sf::Vector2f newPosition = getPosition(SYSTEM_CENTER);
+    shape.setPosition(newPosition);
+    border.setPosition(newPosition);
 
     while (shipQueue.size() > 0) {
         Spaceship ship = shipQueue.back();
@@ -122,8 +139,7 @@ void Planet::update(Game* game, float dt) {
 	// TODO: would like to implement people management ex. # of framers, scientists, engineers, 
 	// laborers and resource production would be based of this
 	int number_of_farmers = resources.store[Population];
-    if(number_of_farmers > farmers_cap)
-    {
+    if(number_of_farmers > farmers_cap) {
         number_of_farmers = farmers_cap;
     }
 
@@ -139,18 +155,14 @@ void Planet::update(Game* game, float dt) {
 	}
 
 	// Each farmer on the planet can grow food equal to the bio diversity of the planet, however each person must eats one
-    if(!resources.store[Population]) // No farmers, no food
-    {
-        resources.store[Food] = 0;
-    }
-    else
-    {
-        resources.store[Food] = int((number_of_farmers*biodiversity)/std::sqrt(resources.store[Population]));
-    }
+  if(!resources.store[Population]) { // No farmers, no food
+      resources.store[Food] = 0;
+  } else {
+      resources.store[Food] = int((number_of_farmers*biodiversity)/std::sqrt(resources.store[Population]));
+  }
 
     // Food cap
-    if(resources.store[Food] > food_cap)
-    {
+    if(resources.store[Food] > food_cap) {
         resources.store[Food] = food_cap;
     }
 }
