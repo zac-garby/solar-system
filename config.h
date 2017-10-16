@@ -52,7 +52,15 @@
 #define SIDEBAR_UPDATE_TIME_S 1.0f
 
 /** Constants **/
-#define PI 3.14159f
+#define PI            3.14159f
+#define AU_TO_METER   1.496E+11f
+#define GRAVITY_CONST 6.67E-14f    // m^3 / g / s^2
+
+// Earth constants
+#define EARTH_RADIUS  6.371E+6f    // m
+#define EARTH_MASS    5.972E+24f   // g
+#define EARTH_DENSITY 5.51E+6f     // g / m^3
+#define EARTH_G       9.8f         // m / s^2
 
 
 /** Colours **/
@@ -81,12 +89,15 @@
 // Should probably be tweaked.
 // Currently on minimum radius and minimum density capacity is 50k
 // On maximum radius and maximum density capacity is 9million.
-#define MIN_DENSITY 0.00001f
-#define MAX_DENSITY 0.0005f
+#define MIN_DENSITY 1E-5f
+#define MAX_DENSITY 5E-4f
 
-// The bounds of planet radii
-#define MIN_RADIUS 20000
-#define MAX_RADIUS 38000
+// Factor to convert planet radius from meters to screen pixels
+#define RADIUS_TO_PIXEL_FACTOR 4E-3f
+
+// The bounds of the planet likeness to Earth
+#define MIN_EARTH_LIKENESS 0.5f
+#define MAX_EARTH_LIKENESS 2.0f
 
 // The extra pixels added to the planet radius to calculate its border
 #define PLANET_BORDER_EXTRA_PIXELS 10

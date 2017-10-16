@@ -27,15 +27,17 @@ PlanetInspector::PlanetInspector(Planet *planet)
 
         physical = TextWidget(&header, "Physical Properties", true);
         distance = TextWidget(&body, "Distance from sun: " + std::to_string(int(planet->distanceFromSun / 80)) + " AU", false);
-        radius = TextWidget(&body, "Radius: " + std::to_string(int(planet->radius)) + " miles", false);
-        mass = TextWidget(&body, "Mass: " + std::to_string(int(planet->mass)) + " yg", false);
+        radius = TextWidget(&body, "Radius: " + std::to_string(int(planet->radius)) + " m", false);
+        mass = TextWidget(&body, "Mass: " + std::to_string(int(planet->mass * 1E-24)) + " yg", false);
         speed = TextWidget(&body, "Speed: " + std::to_string(int(planet->speed)) + " miles/s", false);
+        gravity = TextWidget(&body, "Gravity: " + std::to_string(float(planet->gravity)) + " g", false);
 
         widgets.addWidget(&physical);
         widgets.addWidget(&distance);
         widgets.addWidget(&radius);
         widgets.addWidget(&mass);
         widgets.addWidget(&speed);
+        widgets.addWidget(&gravity);
         widgets.addWidget(&space);
 
         life = TextWidget(&header, "Life", true);
@@ -111,9 +113,10 @@ void PlanetInspector::updateWidgets() {
         return;
     
     distance.setString("Distance from sun: " + std::to_string(int(planet->distanceFromSun / 80)) + " AU");
-    radius.setString("Radius: " + std::to_string(int(planet->radius)) + " miles");
-    mass.setString("Mass: " + std::to_string(int(planet->mass)) + " yg");
+    radius.setString("Radius: " + std::to_string(int(planet->radius)) + " m");
+    mass.setString("Mass: " + std::to_string(int(planet->mass * 1E-24)) + " yg");
     speed.setString("Speed: " + std::to_string(int(planet->speed)) + " miles/s");
+    gravity.setString("Gravity: " + std::to_string(float(planet->gravity)) + " g");
 
     population.setString("Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants");
     species.setString("Species: " + std::to_string(planet->resources.store[Species]) + " species");

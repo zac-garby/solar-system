@@ -44,6 +44,7 @@ public:
 
     // The properties. This might be moved to its own struct
     // in the future.
+    float earthLikeness;    // How likely the planet is to Earth (1f == Earth)
     float radius;           // x10^2AU
     float distanceFromSun;  // miles
     float mass;             // yg (yottagrams)
@@ -51,6 +52,7 @@ public:
     float speed;            // px/s
     float biodiversity;	    // between 1-10
     float capacity;         // capacity
+    float gravity;          // relative to Earth's g
 
     // Explicit since there's only one parameter.
     explicit Planet(float radius);

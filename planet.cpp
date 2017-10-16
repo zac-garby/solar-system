@@ -48,18 +48,20 @@ Planet::Planet(float distance) {
     // Population has 40% chance to be 0, otherwise it's random from MIN_POPULATION to MAX_POPULATION
     resources.store[ResourceType::Population] = rand() > RAND_MAX * 0.4 ? int(randRange(MIN_POPULATION, MAX_POPULATION)) : 0;
 
-    // Radius is from MIN_RADIUS to MAX_RADIUS
-    radius = randRange(MIN_RADIUS, MAX_RADIUS);
+    earthLikeness = randRange(MIN_EARTH_LIKENESS, MAX_EARTH_LIKENESS);
+    radius = earthLikeness * EARTH_RADIUS;
+    mass = 4.0f / 3.0f * PI * (radius * radius * radius) * EARTH_DENSITY;
+
+    // Gravity acceleration in surface is calculated as G*M/r^2.
+    // Expressed relative to Earth Gravity acceleration in surface (g).
+    gravity = GRAVITY_CONST * mass / (radius * radius) / EARTH_G;
 
     // Find surface area and then calculate capacity based on density per area.
     capacity = (4 * PI * radius * radius) * randRange(MIN_DENSITY, MAX_DENSITY);
 
-    // Mass is radius * a random float from 0.75 to 1.25
-    mass = radius * randRange(0.75, 1.25);
-
-    // biodiveristy is just the radius of the planet scaled between 1-10
-    // this assumes a bigger planey would be more diverse, etc.
-    biodiversity = ((((radius - MIN_RADIUS) * (10-1)) / (MAX_RADIUS - MIN_RADIUS)) + 1);
+    // biodiveristy is just the Earth-likeness of the planet scaled between 1-10
+    // this assumes a bigger planet (earthLikeness >> 1) would be more diverse, etc.
+    biodiversity = ((((earthLikeness - MIN_EARTH_LIKENESS) * (10-1)) / (MAX_EARTH_LIKENESS - MIN_EARTH_LIKENESS)) + 1);
 
     // Angle is from 0 to 360
     angle = randRange(0, 360);
@@ -71,7 +73,6 @@ Planet::Planet(float distance) {
     name = Planet::randomName();
 
     float pixRadius = getPixelRadius();
-
     shape = sf::CircleShape(pixRadius);
     shape.setFillColor(colour);
     shape.setOrigin(pixRadius, pixRadius);
@@ -92,7 +93,7 @@ Planet::Planet(float distance) {
 }
 
 float Planet::getPixelRadius() {
-    return radius / (ASSUMED_WIDTH / WIDTH_RATIO);
+    return radius / (ASSUMED_WIDTH / WIDTH_RATIO) * RADIUS_TO_PIXEL_FACTOR;
 }
 
 float Planet::getBorderPixelRadius() {
