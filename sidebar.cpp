@@ -4,6 +4,23 @@
 
 #include "sidebar.h"
 
+std::string formatNumber(int n) {
+    std::string s;
+    int cnt = 0;
+
+    do {
+        s.insert(0, 1, char('0' + n % 10));
+        n /= 10;
+
+        if (++cnt == 3 && n) {
+            s.insert(0, 1, ',');
+            cnt = 0;
+        }
+    } while (n);
+
+    return s;
+}
+
 /*********************/
 /** PlanetInspector **/
 /*********************/
@@ -26,11 +43,11 @@ PlanetInspector::PlanetInspector(Planet *planet)
         widgets.addWidget(&space);
 
         physical = TextWidget(&header, "Physical Properties", true);
-        distance = TextWidget(&body, "Distance from sun: " + std::to_string(int(planet->distanceFromSun / 80)) + " AU", false);
-        radius = TextWidget(&body, "Radius: " + std::to_string(int(planet->radius)) + " m", false);
-        mass = TextWidget(&body, "Mass: " + std::to_string(int(planet->mass * 1E-24)) + " yg", false);
-        speed = TextWidget(&body, "Speed: " + std::to_string(int(planet->speed)) + " miles/s", false);
-        gravity = TextWidget(&body, "Gravity: " + std::to_string(float(planet->gravity)) + " g", false);
+        distance = TextWidget(&body, "Distance from sun: " + formatNumber(int(planet->distanceFromSun / 80)) + " AU", false);
+        radius = TextWidget(&body, "Radius: " + formatNumber(int(planet->radius)) + " m", false);
+        mass = TextWidget(&body, "Mass: " + formatNumber(int(planet->mass * 1E-24)) + " yg", false);
+        speed = TextWidget(&body, "Speed: " + formatNumber(int(planet->speed)) + " miles/s", false);
+        gravity = TextWidget(&body, "Gravity: " + formatNumber(int(planet->gravity)) + " g", false);
 
         widgets.addWidget(&physical);
         widgets.addWidget(&distance);
@@ -41,10 +58,10 @@ PlanetInspector::PlanetInspector(Planet *planet)
         widgets.addWidget(&space);
 
         life = TextWidget(&header, "Life", true);
-        population = TextWidget(&body, "Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants", false);
-        species = TextWidget(&body, "Species: " + std::to_string(planet->resources.store[Species]) + " species", false);
+        population = TextWidget(&body, "Population: " + formatNumber(planet->resources.store[Population]) + " inhabitants", false);
+        species = TextWidget(&body, "Species: " + formatNumber(planet->resources.store[Species]) + " species", false);
         inhabitants = TextWidget(&body, "Inhabitants: " + planet->getInhabitantName(), false);
-        biodiversity = TextWidget(&body, "Biodiveristy: " + std::to_string(int(planet->biodiversity)), false);
+        biodiversity = TextWidget(&body, "Biodiveristy: " + formatNumber(int(planet->biodiversity)), false);
 
         widgets.addWidget(&life);
         widgets.addWidget(&population);
@@ -54,11 +71,11 @@ PlanetInspector::PlanetInspector(Planet *planet)
         widgets.addWidget(&space);
 
         resources = TextWidget(&header, "Resources", true);
-        metal = TextWidget(&body, "Metal: " + std::to_string(planet->resources.store[Metal]) + " tons", false);
-        wood = TextWidget(&body, "Wood: " + std::to_string(planet->resources.store[Wood]) + " tons", false);
-        water = TextWidget(&body, "Water: " + std::to_string(planet->resources.store[Water]) + " cubic feet", false);
-        food = TextWidget(&body, "Food: " + std::to_string(planet->resources.store[Food]) + " units", false);
-        weaponary = TextWidget(&body, "Weaponary: " + std::to_string(planet->resources.store[Weaponary]) + " units", false);
+        metal = TextWidget(&body, "Metal: " + formatNumber(planet->resources.store[Metal]) + " tons", false);
+        wood = TextWidget(&body, "Wood: " + formatNumber(planet->resources.store[Wood]) + " tons", false);
+        water = TextWidget(&body, "Water: " + formatNumber(planet->resources.store[Water]) + " cubic feet", false);
+        food = TextWidget(&body, "Food: " + formatNumber(planet->resources.store[Food]) + " units", false);
+        weaponary = TextWidget(&body, "Weaponary: " + formatNumber(planet->resources.store[Weaponary]) + " units", false);
 
         widgets.addWidget(&resources);
         widgets.addWidget(&metal);
@@ -112,23 +129,23 @@ void PlanetInspector::updateWidgets() {
     if (nullptr == planet)
         return;
     
-    distance.setString("Distance from sun: " + std::to_string(int(planet->distanceFromSun / 80)) + " AU");
-    radius.setString("Radius: " + std::to_string(int(planet->radius)) + " m");
-    mass.setString("Mass: " + std::to_string(int(planet->mass * 1E-24)) + " yg");
-    speed.setString("Speed: " + std::to_string(int(planet->speed)) + " miles/s");
-    gravity.setString("Gravity: " + std::to_string(float(planet->gravity)) + " g");
+    distance.setString("Distance from sun: " + formatNumber(int(planet->distanceFromSun / 80)) + " AU");
+    radius.setString("Radius: " + formatNumber(int(planet->radius)) + " m");
+    mass.setString("Mass: " + formatNumber(int(planet->mass * 1E-24)) + " yg");
+    speed.setString("Speed: " + formatNumber(int(planet->speed)) + " miles/s");
+    gravity.setString("Gravity: " + formatNumber(float(planet->gravity)) + " g");
 
-    population.setString("Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants");
-    species.setString("Species: " + std::to_string(planet->resources.store[Species]) + " species");
+    population.setString("Population: " + formatNumber(planet->resources.store[Population]) + " inhabitants");
+    species.setString("Species: " + formatNumber(planet->resources.store[Species]) + " species");
     inhabitants.setString("Inhabitants: " + planet->getInhabitantName());
-    biodiversity.setString("Biodiveristy: " + std::to_string(int(planet->biodiversity)));
+    biodiversity.setString("Biodiveristy: " + formatNumber(int(planet->biodiversity)));
 
-    metal.setString("Metal: " + std::to_string(planet->resources.store[Metal]) + " tons");
-    wood.setString("Wood: " + std::to_string(planet->resources.store[Wood]) + " tons");
-    water.setString("Water: " + std::to_string(planet->resources.store[Water]) + " cubic feet");
-    populationResource.setString("Population: " + std::to_string(planet->resources.store[Population]) + " inhabitants");
-    food.setString("Food: " + std::to_string(planet->resources.store[Food]) + " tons");
-    weaponary.setString("Weaponary: " + std::to_string(planet->resources.store[Weaponary]) + " units");
+    metal.setString("Metal: " + formatNumber(planet->resources.store[Metal]) + " tons");
+    wood.setString("Wood: " + formatNumber(planet->resources.store[Wood]) + " tons");
+    water.setString("Water: " + formatNumber(planet->resources.store[Water]) + " cubic feet");
+    populationResource.setString("Population: " + formatNumber(planet->resources.store[Population]) + " inhabitants");
+    food.setString("Food: " + formatNumber(planet->resources.store[Food]) + " tons");
+    weaponary.setString("Weaponary: " + formatNumber(planet->resources.store[Weaponary]) + " units");
 }
 
 
@@ -215,10 +232,10 @@ void ShipDesigner::update(float dt) {
     widgets.update(dt);
 
     // Update the values of the sender resource indicators
-    metal.setString("Metal: " + std::to_string(sender->resources.store[Metal]));
-    population.setString("Population: " + std::to_string(sender->resources.store[Population]));
-    food.setString("Food: " + std::to_string(sender->resources.store[Food]));
-    weaponary.setString("Weaponary: " + std::to_string(sender->resources.store[Weaponary]));
+    metal.setString("Metal: " + formatNumber(sender->resources.store[Metal]));
+    population.setString("Population: " + formatNumber(sender->resources.store[Population]));
+    food.setString("Food: " + formatNumber(sender->resources.store[Food]));
+    weaponary.setString("Weaponary: " + formatNumber(sender->resources.store[Weaponary]));
 }
 
 void ShipDesigner::handleEvent(sf::Event *event) {
