@@ -1,5 +1,4 @@
 language: cpp
-dist: trusty
 addons:
   apt:
     packages:
@@ -11,3 +10,4 @@ script:
   - gcc --version
   - g++ --version
   - ./cmake-3.9.4-Linux-x86_64/bin/cmake . && make
+dist: trusty
