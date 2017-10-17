@@ -120,7 +120,7 @@ void PlanetInspector::updateWidgets() {
     radius.setString("Radius: " + formatNumber(int(planet->radius)) + " m");
     mass.setString("Mass: " + formatNumber(int(planet->mass * 1E-24)) + " yg");
     speed.setString("Speed: " + formatNumber(int(planet->speed)) + " miles/s");
-    gravity.setString("Gravity: " + formatNumber(float(planet->gravity)) + " g");
+    gravity.setString("Gravity: " + formatNumber(int(planet->gravity)) + " g");
 
     population.setString("Population: " + formatNumber(planet->resources.store[Population]) + " inhabitants");
     species.setString("Species: " + formatNumber(planet->resources.store[Species]) + " species");
