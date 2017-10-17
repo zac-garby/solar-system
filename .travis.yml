@@ -1,0 +1,12 @@
+language: cpp
+addons:
+  apt:
+    packages:
+      - libsfml-dev
+before_install:
+  - wget https://cmake.org/files/v3.9/cmake-3.9.4-Linux-x86_64.tar.gz
+  - tar xzf cmake-3.9.4-Linux-x86_64.tar.gz
+script:
+  - gcc --version
+  - g++ --version
+  - ./cmake-3.9.4-Linux-x86_64/bin/cmake . && make
