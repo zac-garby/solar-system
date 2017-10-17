@@ -140,8 +140,8 @@ void Planet::update(Game* game, float dt) {
 	// TODO: would like to implement people management ex. # of framers, scientists, engineers, 
 	// laborers and resource production would be based of this
 	int number_of_farmers = resources.store[Population];
-    if(number_of_farmers > farmers_cap) {
-        number_of_farmers = farmers_cap;
+    if(number_of_farmers > farmersCap) {
+        number_of_farmers = farmersCap;
     }
 
     // Update others resources stats
@@ -163,8 +163,8 @@ void Planet::update(Game* game, float dt) {
   }
 
     // Food cap
-    if(resources.store[Food] > food_cap) {
-        resources.store[Food] = food_cap;
+    if(resources.store[Food] > foodCap) {
+        resources.store[Food] = foodCap;
     }
 }
 

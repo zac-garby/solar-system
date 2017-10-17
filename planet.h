@@ -20,8 +20,8 @@
 class Game;
 
 class Planet {
-    const int food_cap = 50000;
-    const int farmers_cap = 5000000;
+    const int foodCap = 50000;
+    const int farmersCap = 5000000;
 
     sf::CircleShape shape;
     sf::CircleShape orbit;
