@@ -10,3 +10,4 @@ script:
   - g++ --version
   - cmake --version
   - cmake . && make
+  - cat /home/travis/build/Zac-Garby/solar-system/CMakeFiles/CMakeOutput.log
