@@ -88,6 +88,10 @@ class ShipDesigner : public Sidebar {
     TextWidget resourcesHeader, planetsText,
             metal, population, food, weaponary;
 
+    float timeLastUpdate;
+
+    void updateWidgets();
+
 public:
     Planet *sender, *destination;
 

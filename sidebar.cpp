@@ -204,6 +204,9 @@ ShipDesigner::ShipDesigner(Game *game, Planet *sender, Planet *destination): sen
 
     widgets.addWidget(&launch);
 
+    // Initial widget update
+    updateWidgets();
+
     // Create the background
     background = sf::RectangleShape(sf::Vector2f(SIDEBAR_WIDTH, HEIGHT));
     background.setFillColor(sf::Color(SIDEBAR_BG));
@@ -218,13 +221,21 @@ void ShipDesigner::render(sf::RenderWindow *win) {
 void ShipDesigner::update(float dt) {
     widgets.update(dt);
 
+    timeLastUpdate += dt;
+    if (timeLastUpdate >= SIDEBAR_UPDATE_TIME_S) {
+        timeLastUpdate -= SIDEBAR_UPDATE_TIME_S;
+        updateWidgets();
+    }
+}
+
+void ShipDesigner::handleEvent(sf::Event *event) {
+    widgets.handleEvent(event);
+}
+
+void ShipDesigner::updateWidgets() {
     // Update the values of the sender resource indicators
     metal.setString("Metal: " + formatNumber(sender->resources.store[Metal]));
     population.setString("Population: " + formatNumber(sender->resources.store[Population]));
     food.setString("Food: " + formatNumber(sender->resources.store[Food]));
     weaponary.setString("Weaponary: " + formatNumber(sender->resources.store[Weaponary]));
-}
-
-void ShipDesigner::handleEvent(sf::Event *event) {
-    widgets.handleEvent(event);
 }
