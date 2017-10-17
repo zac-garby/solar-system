@@ -100,7 +100,7 @@
 #define MAX_EARTH_LIKENESS 2.0f
 
 // The extra pixels added to the planet radius to calculate its border
-#define PLANET_BORDER_EXTRA_PIXELS 10
+#define PLANET_BORDER_EXTRA_PIXELS N(2)
 #define PLANET_BORDER_THICKNESS N(2)
 
 // The bounds of planet speed
