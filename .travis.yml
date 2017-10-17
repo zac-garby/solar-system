@@ -8,4 +8,5 @@ addons:
 script:
   - gcc --version
   - g++ --version
+  - cmake --version
   - cmake . && make
