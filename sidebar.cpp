@@ -5,20 +5,7 @@
 #include "sidebar.h"
 
 std::string formatNumber(int n) {
-    std::string s;
-    int cnt = 0;
-
-    do {
-        s.insert(0, 1, char('0' + n % 10));
-        n /= 10;
-
-        if (++cnt == 3 && n) {
-            s.insert(0, 1, ',');
-            cnt = 0;
-        }
-    } while (n);
-
-    return s;
+    return std::to_string(n);
 }
 
 /*********************/
