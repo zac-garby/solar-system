@@ -145,7 +145,12 @@ void Planet::update(Game* game, float dt) {
     }
 
     // Update others resources stats
-    resources.store[Species] += randRange(0, 10000);
+
+	// species growth is 1 in 100000 with an advantage given based off biodiversity
+	int growth = 100001 / biodiversity;
+	if (rand() % growth < 1) {
+		resources.store[Species] += 1;
+	}
     resources.store[Metal] += randRange(0, 10000);
     resources.store[Wood] += randRange(0, 10000);
     resources.store[Water] += randRange(0, 10000);

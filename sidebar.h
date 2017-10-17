@@ -53,6 +53,10 @@ class PlanetInspector : public Sidebar {
             life, population, inhabitants, species, biodiversity,
             resources, metal, populationResource, food, wood, water, weaponary;
 
+	ButtonWidget people_management;
+
+	Sidebar *people_management_pane;
+
     float timeLastUpdate;
 
 public:
@@ -96,6 +100,23 @@ public:
     void update(float dt) override;
     void handleEvent(sf::Event *event) override;
 
+};
+
+class PeopleManagement : public Sidebar {
+	sf::Font body, header;
+
+	TitleWidget title;
+	SpaceWidget space;
+	WidgetList widgets;
+
+	SliderWidget farmersSlider, engineersSlider,
+		laborersSlider, scientistsSlider;
+
+	public: 
+	explicit PeopleManagement(Planet *planet);
+	void render(sf::RenderWindow*) override;
+	void update(float dt) override;
+	void handleEvent(sf::Event *event) override;
 };
 
 #endif //SOLAR_SYSTEM_SIDEBAR_H
