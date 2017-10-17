@@ -20,6 +20,8 @@ class MainMenu : public Scene {
 
     // A helper to create a planet-like button at the given center and radius.
     void makeButton(sf::CircleShape*, sf::CircleShape*, sf::Text*, std::string, float, float, float);
+    // A helper to check if a position (e.g. mouse) is inside the play button area
+    bool isInsidePlayButtonArea(sf::Vector2f);
 
 public:
     MainMenu();

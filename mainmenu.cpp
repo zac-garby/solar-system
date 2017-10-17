@@ -39,17 +39,15 @@ void MainMenu::render(sf::RenderWindow *win) {
 
 Scene *MainMenu::handleEvent(sf::Event *event) {
     if (event->type == sf::Event::MouseButtonReleased) {
-
-        // Calculate pos and distance to play button to see if it was
-        // clicked. This will have to be modified when more buttons are
-        // added.
         sf::Vector2f pos(event->mouseButton.x, event->mouseButton.y);
-        sf::Vector2f diff = playButton.getPosition() - pos;
-
-        float distance = sqrtf(diff.x * diff.x + diff.y * diff.y);
 
         // If the play button is clicked, go to the Game scene
-        if (distance <= 130) return new Game();
+        if (isInsidePlayButtonArea(pos)) return new Game();
+    } else if (event->type == sf::Event::MouseMoved) {
+        sf::Vector2f pos(event->mouseMove.x, event->mouseMove.y);
+        // Toggle play button hover effect
+        playButton.setFillColor((isInsidePlayButtonArea(pos) ?
+                    sf::Color::White : sf::Color(BRIGHT_FG)));
     }
 
     return nullptr;
@@ -90,4 +88,14 @@ void MainMenu::makeButton(
     text->setOrigin(textBounds.width / 2, textBounds.height / 2 + N(3));
     text->setPosition(orbit->getPosition() + ppos);
     text->setFillColor(sf::Color(CLEAR_COLOUR));
+}
+
+
+// Calculate pos and distance to play button to see if it was
+// clicked.
+bool MainMenu::isInsidePlayButtonArea(sf::Vector2f pos) {
+    sf::Vector2f diff = playButton.getPosition() - pos;
+    float distance = sqrtf(diff.x * diff.x + diff.y * diff.y);
+
+    return distance <= playButton.getRadius();
 }
