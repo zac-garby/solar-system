@@ -5,6 +5,9 @@
 
 # Compiling on Linux
 
+If your package manager doesn't have Cmake, have a look at
+[this question](https://askubuntu.com/questions/355565/how-to-install-latest-cmake-version-in-linux-ubuntu-from-command-line/865294#865294).
+
 ## Debian
 
 ### Dependencies
