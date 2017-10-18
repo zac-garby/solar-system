@@ -15,19 +15,13 @@ In the future I want to add these features:
 
  - **Random initial resources depending on planet properties**, e.g. a large planet would probably have
     a higher population, metal supply, etc.. than a smaller planet.
-    
- - **Population increasing/decreasing**. i.e. population increases <sub>(exponentially?)</sub> over time,
-    and if a planet is running low on food, *(or high on weaponary?,)* the population will decrease.
    
  - **Inter-planetary relations**, i.e. if planet A sends loads of resources to planet B, planet B will
     like planet A more, but if they don't send anything back planet A will get a bit angry.
     
- - **Better planet generation**. Currently, planet names are terrible, and properties seem a bit
-    random <sup>(because they are)</sup>. It'd be nice to have better name generation, and have
-    properties slightly based on other properties (e.g. population ∝ planet size.)
+ - **Better planet generation**. It'd be nice to have better name generation.
  
  - Many **more planet properties**. Some ideas:
-    - Biodiversity
     - Temperature
     - Type (urban, rural, etc...)
     - **resource:** Technology
