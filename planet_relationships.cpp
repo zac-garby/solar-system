@@ -9,10 +9,10 @@ PlanetRelationships::PlanetRelationships() {
 }
 
 PlanetRelationships::PlanetRelationships(std::vector<Planet*> planets) {
-    for (int i = 0; i < planets.size(); i++) {
+    for (int i = 0; (unsigned)i < planets.size(); i++) {
         Planet *a = planets[i];
 
-        for (int j = i + 1; j < planets.size(); j++) {
+        for (int j = i + 1; (unsigned)j < planets.size(); j++) {
             Planet *b = planets[j];
 
             std::pair<Planet*, Planet*> pair(a, b);
