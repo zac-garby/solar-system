@@ -6,7 +6,7 @@
 #include "game.h"
 
 Game::Game() {
-    font.loadFromFile("assets/fonts/Cabin-Bold.ttf");
+    font.loadFromFile("../assets/fonts/Cabin-Bold.ttf");
     yearDisplay = sf::Text("", font, REGULAR_FONT_SIZE);
     yearDisplay.setFillColor(sf::Color(BRIGHT_FG));
 
@@ -41,7 +41,7 @@ Scene *Game::update(float dt) {
 
             int index = -1;
 
-            for (int i = 0; i < ships.size(); i++) {
+            for (int i = 0; (unsigned)i < ships.size(); i++) {
                 if (ships[i].id == ship.id) {
                     index = i;
                     break;
@@ -218,10 +218,10 @@ void Game::renderRelationships(sf::RenderWindow *win) {
     if (selected != nullptr) {
         for (auto &edge : relationships->relations) {
             if (edge.first.first == selected || edge.first.second == selected)
-                edges.push_back({edge.first.first, edge.first.second, edge.second});
+                edges.push_back(std::make_tuple(edge.first.first, edge.first.second, edge.second));
         }
     } else {
-        for (auto &edge : relationships->relations) edges.push_back({edge.first.first, edge.first.second, edge.second});
+        for (auto &edge : relationships->relations) edges.push_back(std::make_tuple(edge.first.first, edge.first.second, edge.second));
     }
 
     for (auto &edge : edges) {
@@ -273,7 +273,7 @@ std::tuple<int, int, int> Game::getDate() {
         daysLeft--;
     }
 
-    return {date, month + 1, year};
+    return std::make_tuple(date, month + 1, year);
 }
 
 std::vector<Planet*> Game::generatePlanets() {

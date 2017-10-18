@@ -6,8 +6,8 @@
 
 MainMenu::MainMenu() {
     // Load the required fonts
-    font.loadFromFile("assets/fonts/EspressoDolce.ttf");
-    labelFont.loadFromFile("assets/fonts/Cabin-Bold.ttf");
+    font.loadFromFile("../assets/fonts/EspressoDolce.ttf");
+    labelFont.loadFromFile("../assets/fonts/Cabin-Bold.ttf");
 
     // Setup the main title, positioned in the center horizontally and
     // slightly down from the top.

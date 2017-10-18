@@ -15,8 +15,8 @@ std::string formatNumber(int n) {
 PlanetInspector::PlanetInspector(Planet *planet)
     : timeLastUpdate(0.0f) {
 
-    body.loadFromFile("assets/fonts/Cabin-Regular.ttf");
-    header.loadFromFile("assets/fonts/Cabin-Bold.ttf");
+    body.loadFromFile("../assets/fonts/Cabin-Regular.ttf");
+    header.loadFromFile("../assets/fonts/Cabin-Bold.ttf");
 
     this->planet = planet;
 
@@ -115,7 +115,7 @@ void PlanetInspector::update(float dt) {
 void PlanetInspector::updateWidgets() {
     if (nullptr == planet)
         return;
-    
+
     distance.setString("Distance from sun: " + formatNumber(int(planet->distanceFromSun / 80)) + " AU");
     radius.setString("Radius: " + formatNumber(int(planet->radius)) + " m");
     mass.setString("Mass: " + formatNumber(int(planet->mass * 1E-24)) + " yg");
