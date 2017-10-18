@@ -9,5 +9,6 @@ script:
   - gcc --version
   - g++ --version
   - cmake --version
-  - cmake . && make
+  - cmake . -G "Unix Makefiles"
+  - make
   - cat /home/travis/build/Zac-Garby/solar-system/CMakeFiles/CMakeOutput.log
