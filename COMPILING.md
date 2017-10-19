@@ -18,7 +18,17 @@ To compile this program you need to install the following dependencies:
 sudo apt-get update
 sudo apt-get install build-essential
 sudo apt-get install cmake
-sudo apt-get install libsfml-dev
+sudo apt-get install libsfml-dev (outdated version - see below)
+```
+
+### Building newest version of SFML
+```
+git clone https://github.com/SFML/SFML.git
+cd SFML
+sudo apt-get install libopenal-dev
+cmake -G "Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D BUILD_SHARED_LIBS=TRUE .
+make
+sudo make install
 ```
 
 ### Compiling the project
