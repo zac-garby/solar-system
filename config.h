@@ -131,7 +131,7 @@
 #define SHIP_DRAG N(0.25)
 
 // Ships can only carry this many of each resource
-#define MAX_CARGO_PER_RESOURCE 5000
+#define MAX_CARGO_PER_RESOURCE 5000L
 
 // Each ship consumes this much metal from the sender
 #define SHIP_METAL_USAGE 500

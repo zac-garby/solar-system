@@ -128,13 +128,18 @@ void Planet::update(Game* game, float dt) {
 
 	// TODO have people die off if there's not enough food
     // Update Population using logistic model
-    int initialPop = resources.store[Population]; // Initial population of planet
+    long initialPop = resources.store[Population]; // Initial population of planet
     double k = 0.1;                               // Relative growth rate coefficient
     double A = (capacity - initialPop) / initialPop;
     double e = std::exp(1.0);
 
+    // Start reducing population due to shortage of food
+    if(resources.store[Food]==0){
+        k = -0.1;
+    }
+
     if (initialPop != 0) {
-        resources.store[Population] = int(capacity / (1 + A * pow(e, (-k * dt))));
+        resources.store[Population] = long(capacity / (1 + A * pow(e, (-k * dt))));
     }
 
 	// TODO: would like to implement people management ex. # of framers, scientists, engineers, 
@@ -145,27 +150,35 @@ void Planet::update(Game* game, float dt) {
     }
 
     // Update others resources stats
-    resources.store[Species] += randRange(0, 10000);
-    resources.store[Metal] += randRange(0, 10000);
-    resources.store[Wood] += randRange(0, 10000);
-    resources.store[Water] += randRange(0, 10000);
+    resources.store[Species] += randRange(-500, 10000);
+    resources.store[Metal] += randRange(-500, 10000);
+    resources.store[Wood] += randRange(-500, 10000);
+    resources.store[Water] += randRange(-500, 10000);
 
-	// If there's no people their shouldn't be any weapons
-	if (resources.store[Population] > 0) {
-		resources.store[Weaponary] = randRange(0, 10000);
-	}
+  	// If there's no people their shouldn't be any weapons
+  	if (resources.store[Population] > 0) {
+  		resources.store[Weaponary] = randRange(0, 10000);
+  	}
 
-	// Each farmer on the planet can grow food equal to the bio diversity of the planet, however each person must eats one
-  if(!resources.store[Population]) { // No farmers, no food
-      resources.store[Food] = 0;
-  } else {
-      resources.store[Food] = int((number_of_farmers*biodiversity)/std::sqrt(resources.store[Population]));
-  }
-
-    // Food cap
-    if(resources.store[Food] > foodCap) {
-        resources.store[Food] = foodCap;
+	  // Each farmer on the planet can grow food equal to the bio diversity of the planet, however each person must eats one
+    if(!resources.store[Population]) { // No farmers, no food
+        resources.store[Food] = 0;
+    } else {
+        resources.store[Food] = int((number_of_farmers*biodiversity)/std::sqrt(resources.store[Population]));
     }
+
+    // Cap on all resources
+    resources.store[Species] = max(0L, resources.store[Species]);
+    resources.store[Metal] = max(0L, resources.store[Metal]);
+    resources.store[Wood] = max(0L, resources.store[Wood]);
+    resources.store[Water] = max(0L, resources.store[Water]);
+    resources.store[Food] = max(0L, resources.store[Food]);
+
+    resources.store[Species] = min(speciesCap, resources.store[Species]);
+    resources.store[Metal] = min(metalCap, resources.store[Metal]);
+    resources.store[Wood] = min(woodCap, resources.store[Wood]);
+    resources.store[Water] = min(waterCap, resources.store[Water]);
+    resources.store[Food] = min(foodCap, resources.store[Food]);
 }
 
 sf::Vector2f Planet::getPosition(sf::Vector2f center) {

@@ -20,9 +20,13 @@
 class Game;
 
 class Planet {
-    const int foodCap = 50000;
-    const int farmersCap = 5000000;
-
+    const long foodCap = 50000;
+    const long farmersCap = 5000000;
+    const long metalCap = 50000000;
+    const long woodCap = 50000000;
+    const long waterCap = 50000000;
+    const long speciesCap = 500000;
+    
     sf::CircleShape shape;
     sf::CircleShape orbit;
     sf::CircleShape border;

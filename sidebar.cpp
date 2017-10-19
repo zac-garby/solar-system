@@ -4,7 +4,7 @@
 
 #include "sidebar.h"
 
-std::string formatNumber(int n) {
+std::string formatNumber(long long n) {
     return std::to_string(n);
 }
 
@@ -61,7 +61,7 @@ PlanetInspector::PlanetInspector(Planet *planet)
         metal = TextWidget(&body, "Metal: " + formatNumber(planet->resources.store[Metal]) + " tons", false);
         wood = TextWidget(&body, "Wood: " + formatNumber(planet->resources.store[Wood]) + " tons", false);
         water = TextWidget(&body, "Water: " + formatNumber(planet->resources.store[Water]) + " cubic feet", false);
-        food = TextWidget(&body, "Food: " + formatNumber(planet->resources.store[Food]) + " units", false);
+        food = TextWidget(&body, "Food: " + formatNumber(planet->resources.store[Food]) + " tons", false);
         weaponary = TextWidget(&body, "Weaponry: " + formatNumber(planet->resources.store[Weaponary]) + " units", false);
 
         widgets.addWidget(&resources);
@@ -130,7 +130,7 @@ void PlanetInspector::updateWidgets() {
     metal.setString("Metal: " + formatNumber(planet->resources.store[Metal]) + " tons");
     wood.setString("Wood: " + formatNumber(planet->resources.store[Wood]) + " tons");
     water.setString("Water: " + formatNumber(planet->resources.store[Water]) + " cubic feet");
-    populationResource.setString("Population: " + formatNumber(planet->resources.store[Population]) + " inhabitants");
+    //populationResource.setString("Population: " + formatNumber(planet->resources.store[Population]) + " inhabitants");
     food.setString("Food: " + formatNumber(planet->resources.store[Food]) + " tons");
     weaponary.setString("Weaponry: " + formatNumber(planet->resources.store[Weaponary]) + " units");
 }
