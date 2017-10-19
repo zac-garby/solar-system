@@ -62,7 +62,7 @@ PlanetInspector::PlanetInspector(Planet *planet)
         wood = TextWidget(&body, "Wood: " + formatNumber(planet->resources.store[Wood]) + " tons", false);
         water = TextWidget(&body, "Water: " + formatNumber(planet->resources.store[Water]) + " cubic feet", false);
         food = TextWidget(&body, "Food: " + formatNumber(planet->resources.store[Food]) + " units", false);
-        weaponary = TextWidget(&body, "Weaponary: " + formatNumber(planet->resources.store[Weaponary]) + " units", false);
+        weaponary = TextWidget(&body, "Weaponry: " + formatNumber(planet->resources.store[Weaponary]) + " units", false);
 
         widgets.addWidget(&resources);
         widgets.addWidget(&metal);
@@ -132,7 +132,7 @@ void PlanetInspector::updateWidgets() {
     water.setString("Water: " + formatNumber(planet->resources.store[Water]) + " cubic feet");
     populationResource.setString("Population: " + formatNumber(planet->resources.store[Population]) + " inhabitants");
     food.setString("Food: " + formatNumber(planet->resources.store[Food]) + " tons");
-    weaponary.setString("Weaponary: " + formatNumber(planet->resources.store[Weaponary]) + " units");
+    weaponary.setString("Weaponry: " + formatNumber(planet->resources.store[Weaponary]) + " units");
 }
 
 
