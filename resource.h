@@ -21,7 +21,7 @@ enum ResourceType {
     Weaponary
 };
 
-typedef std::map<ResourceType, int> Store;
+typedef std::map<ResourceType, long> Store;
 
 /** Resources
  *

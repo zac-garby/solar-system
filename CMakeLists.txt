@@ -15,7 +15,7 @@ set(SOURCE_FILES
 add_executable(solar_system ${SOURCE_FILES})
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
-find_package(SFML REQUIRED system window graphics)
+find_package(SFML 2.4 REQUIRED system window graphics)
 
 if (SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
