@@ -51,12 +51,19 @@ public:
     float earthLikeness;    // How likely the planet is to Earth (1f == Earth)
     float radius;           // x10^2AU
     float distanceFromSun;  // miles
+    float orbitalPeriod;    // in time increments, should be calculated by Kepler's Third Law using distanceFromSun
     float mass;             // yg (yottagrams)
     float angle;            // º
-    float speed;            // px/s
+    float speed;            // px/s, calculated from Kepler's Second Law using distanceFromSun
     float biodiversity;	    // between 1-10
     float capacity;         // capacity
     float gravity;          // relative to Earth's g
+    float airPressureSurface; // relative to Earth's atm, at surface
+    float atmosphereHeight; // in miles, pressure drops linearly to 0 at altitude==atmosphereHeight
+    float albedo;           // between 0 and 1
+    float surfaceTempEquator; // function of albedo, distanceFromSun
+    int moons;              // larger planets tend to have more
+    int rings;              // 0 for none, else display n rings as concentric circles above equator
 
     // Explicit since there's only one parameter.
     explicit Planet(float radius);
