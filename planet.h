@@ -78,6 +78,35 @@ public:
 
     // Calculates the planet border's radius in pixels
     float getBorderPixelRadius();
+    
+    // Calculates the planet's orbital period in game minutes using Kepler's Third Law
+    float getOrbitalPeriod()
+    {
+        // convert distanceFromSun in miles to AU
+        float distanceInAU = distanceFromSun * 1.60934f; // miles to kilometers
+        distanceInAU *= 1000; // kilometers to meters
+        distanceInAU /= AU_TO_METER; // meters to AU
+        // Kepler's Third Law
+        float periodInYears = (float)sqrt((double)(distanceInAU * distanceInAU * distanceInAU));
+        return (periodInYears * TIMESCALE);
+    }
+    
+    // Calculates acceleration due to gravity at surface relative to Earth's acceleration due to gravity
+    float getGravity()
+    {
+        /* 
+           m1 = mass of object on planet's surface
+           m2 = mass of planet
+           a = acceleration due to planet's gravity
+           F = m1a and F = G(m1m2)/(r^2)
+           m1a = G(m1m2)/(r^2)
+           a = G*m2/(r^2)
+        */
+        float a = GRAVITY_CONST; // uses meters, grams, seconds
+        a *= mass * 1.0E24f; // convert yottagrams to grams
+        a /= (radius * radius); // acceleration due to gravity in meters per second squared
+        return a / EARTH_G; // returns acceleration due to gravity as a multiple of Earth's acceleration due to gravity
+    }
 
     // Checks whether the given vector is inside
     // the planet's bounds
