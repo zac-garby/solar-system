@@ -142,8 +142,8 @@ void PlanetInspector::updateWidgets() {
 
 ShipDesigner::ShipDesigner(Game *game, Planet *sender, Planet *destination): sender(sender), destination(destination) {
     // Load the required fonts
-    body.loadFromFile("assets/fonts/Cabin-Regular.ttf");
-    header.loadFromFile("assets/fonts/Cabin-Bold.ttf");
+    body.loadFromFile("../assets/fonts/Cabin-Regular.ttf");
+    header.loadFromFile("../assets/fonts/Cabin-Bold.ttf");
 
     // Create and add the widgets
     title = TitleWidget(&header, "Ship Designer");
